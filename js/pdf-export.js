@@ -1,6 +1,7 @@
 /**
  * 小窑湾海钓产业园 设计系统
  * PDF 导出功能
+ * 使用 jsPDF API 直接生成（html2canvas 截图 + jsPDF 分页）
  */
 
 (function () {
@@ -48,16 +49,13 @@
     return new Promise(function (resolve, reject) {
       // 获取当前方案信息
       var schemeName = '深海蓝 Ocean Deep';
-      var schemeId = 'current-scheme';
       if (typeof DSColorSchemes !== 'undefined') {
-        // 尝试找到当前激活的方案
         var activeCard = document.querySelector('.ds-scheme-card.active');
         if (activeCard) {
           var id = activeCard.getAttribute('data-scheme-id');
-          var allSchemes = DSColorSchemes;
-          for (var i = 0; i < allSchemes.length; i++) {
-            if (allSchemes[i].id === id) {
-              schemeName = allSchemes[i].name + ' ' + allSchemes[i].nameEn;
+          for (var i = 0; i < DSColorSchemes.length; i++) {
+            if (DSColorSchemes[i].id === id) {
+              schemeName = DSColorSchemes[i].name + ' ' + DSColorSchemes[i].nameEn;
               break;
             }
           }
@@ -113,14 +111,15 @@
       var s3_800 = cv('--color-secondary3-800');
       var s3_900 = cv('--color-secondary3-900');
 
-      // 构建 PDF 内容容器
-      // 注意：不能用 left:-9999px，html2canvas 会截取空白
-      var container = document.createElement('div');
-      container.id = 'ds-pdf-export';
-      container.style.cssText = 'position:fixed;top:0;left:0;width:794px;padding:48px;font-family:"DM Sans","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;color:#2A2E3A;background:#fff;z-index:99999;visibility:hidden;';
-
       var now = new Date();
       var dateStr = now.getFullYear() + '.' + String(now.getMonth() + 1).padStart(2, '0') + '.' + String(now.getDate()).padStart(2, '0');
+
+      // 构建 PDF 内容容器
+      // 关键：使用 opacity:0 + z-index:-1 而非 visibility:hidden
+      // html2canvas 无法截取 visibility:hidden 的元素，但 opacity:0 的元素可以
+      var container = document.createElement('div');
+      container.id = 'ds-pdf-export';
+      container.style.cssText = 'position:fixed;top:0;left:0;width:794px;padding:48px;font-family:"DM Sans","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;color:#2A2E3A;background:#fff;z-index:-1;opacity:0;pointer-events:none;';
 
       container.innerHTML = ''
         // 封面标题
@@ -277,31 +276,71 @@
 
       document.body.appendChild(container);
 
-      var opt = {
-        margin: [10, 10, 10, 10],
-        filename: '小窑湾海钓产业园-设计系统-' + schemeName.replace(/\s+/g, '-') + '.pdf',
-        image: { type: 'jpeg', quality: 0.95 },
-        html2canvas: {
+      // 等待 500ms 确保渲染完成后再截图
+      setTimeout(function () {
+        // 使用 html2canvas 直接截图（来自 html2pdf.bundle.min.js）
+        var html2canvasLib = window.html2canvas;
+        if (!html2canvasLib) {
+          document.body.removeChild(container);
+          reject(new Error('html2canvas 未加载'));
+          return;
+        }
+
+        html2canvasLib(container, {
           scale: 2,
           useCORS: true,
           logging: false,
-          onclone: function (clonedDoc) {
-            // html2canvas 会克隆 DOM，在克隆的文档中让容器可见
-            var cloned = clonedDoc.getElementById('ds-pdf-export');
-            if (cloned) cloned.style.visibility = 'visible';
-          }
-        },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
-      };
+          backgroundColor: '#ffffff',
+          width: 794,
+          windowWidth: 794
+        }).then(function (canvas) {
+          // 截图完成后立即移除容器
+          document.body.removeChild(container);
 
-      html2pdf().set(opt).from(container).save().then(function () {
-        document.body.removeChild(container);
-        resolve();
-      }).catch(function (err) {
-        document.body.removeChild(container);
-        reject(err);
-      });
+          // 使用 jsPDF 直接创建 PDF（来自 html2pdf.bundle.min.js）
+          var jsPDFConstructor = window.jspdf && window.jspdf.jsPDF;
+          if (!jsPDFConstructor) {
+            reject(new Error('jsPDF 未加载'));
+            return;
+          }
+
+          var pdf = new jsPDFConstructor('p', 'mm', 'a4');
+
+          var pageWidth = pdf.internal.pageSize.getWidth();
+          var pageHeight = pdf.internal.pageSize.getHeight();
+          var margin = 10;
+          var contentWidth = pageWidth - margin * 2;
+          var contentHeight = pageHeight - margin * 2;
+
+          // 将 canvas 转为 JPEG 图片数据
+          var imgData = canvas.toDataURL('image/jpeg', 0.95);
+          var imgWidth = contentWidth;
+          var imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+          // 计算需要多少页
+          var heightLeft = imgHeight;
+          var position = margin;
+
+          // 第一页
+          pdf.addImage(imgData, 'JPEG', margin, position, imgWidth, imgHeight);
+          heightLeft -= contentHeight;
+
+          // 如果内容超出第一页，添加更多页
+          while (heightLeft > 0) {
+            position = margin - (imgHeight - heightLeft);
+            pdf.addPage();
+            pdf.addImage(imgData, 'JPEG', margin, position, imgWidth, imgHeight);
+            heightLeft -= contentHeight;
+          }
+
+          // 保存 PDF
+          pdf.save('小窑湾海钓产业园-设计系统-' + schemeName.replace(/\s+/g, '-') + '.pdf');
+          resolve();
+        }).catch(function (err) {
+          document.body.removeChild(container);
+          reject(err);
+        });
+      }, 500);
     });
   }
 
