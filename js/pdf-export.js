@@ -114,9 +114,10 @@
       var s3_900 = cv('--color-secondary3-900');
 
       // 构建 PDF 内容容器
+      // 注意：不能用 left:-9999px，html2canvas 会截取空白
       var container = document.createElement('div');
       container.id = 'ds-pdf-export';
-      container.style.cssText = 'position:absolute;left:-9999px;top:0;width:794px;padding:48px;font-family:"DM Sans","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;color:#2A2E3A;background:#fff;';
+      container.style.cssText = 'position:fixed;top:0;left:0;width:794px;padding:48px;font-family:"DM Sans","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;color:#2A2E3A;background:#fff;z-index:99999;visibility:hidden;';
 
       var now = new Date();
       var dateStr = now.getFullYear() + '.' + String(now.getMonth() + 1).padStart(2, '0') + '.' + String(now.getDate()).padStart(2, '0');
@@ -280,7 +281,16 @@
         margin: [10, 10, 10, 10],
         filename: '小窑湾海钓产业园-设计系统-' + schemeName.replace(/\s+/g, '-') + '.pdf',
         image: { type: 'jpeg', quality: 0.95 },
-        html2canvas: { scale: 2, useCORS: true, logging: false },
+        html2canvas: {
+          scale: 2,
+          useCORS: true,
+          logging: false,
+          onclone: function (clonedDoc) {
+            // html2canvas 会克隆 DOM，在克隆的文档中让容器可见
+            var cloned = clonedDoc.getElementById('ds-pdf-export');
+            if (cloned) cloned.style.visibility = 'visible';
+          }
+        },
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
         pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
       };
