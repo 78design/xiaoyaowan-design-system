@@ -1,0 +1,325 @@
+/* ============================================
+   小窑湾海钓产业园 设计系统
+   Animations — 动效规范
+   ============================================ */
+
+/* ---- 入场动画 Entrance Animations ---- */
+
+@keyframes ds-fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes ds-fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ds-fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ds-fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes ds-fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes ds-scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes ds-slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes ds-slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---- 海洋主题动画 Ocean Animations ---- */
+
+@keyframes ds-oceanWave {
+  0%, 100% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(-5px) translateY(-3px);
+  }
+  50% {
+    transform: translateX(0) translateY(-5px);
+  }
+  75% {
+    transform: translateX(5px) translateY(-3px);
+  }
+}
+
+@keyframes ds-oceanFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes ds-oceanShimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes ds-ripple {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+@keyframes ds-sway {
+  0%, 100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
+/* ---- 加载动画 Loading Animations ---- */
+
+@keyframes ds-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes ds-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes ds-dotBounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.4;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes ds-barLoad {
+  0% {
+    transform: scaleY(0.4);
+  }
+  20% {
+    transform: scaleY(1);
+  }
+  40% {
+    transform: scaleY(0.4);
+  }
+  100% {
+    transform: scaleY(0.4);
+  }
+}
+
+/* ---- 交互反馈 Interaction Feedback ---- */
+
+@keyframes ds-press {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(0.96); }
+  100% { transform: scale(1); }
+}
+
+@keyframes ds-shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+  20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+@keyframes ds-successPop {
+  0%   { transform: scale(0); opacity: 0; }
+  50%  { transform: scale(1.15); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes ds-errorShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+/* ---- 动画工具类 Animation Utilities ---- */
+
+.ds-animate-fadeIn {
+  animation: ds-fadeIn var(--duration-normal) var(--ease-out) both;
+}
+
+.ds-animate-fadeInUp {
+  animation: ds-fadeInUp var(--duration-slow) var(--ease-out) both;
+}
+
+.ds-animate-fadeInDown {
+  animation: ds-fadeInDown var(--duration-slow) var(--ease-out) both;
+}
+
+.ds-animate-scaleIn {
+  animation: ds-scaleIn var(--duration-normal) var(--ease-bounce) both;
+}
+
+.ds-animate-float {
+  animation: ds-oceanFloat var(--duration-slowest) var(--ease-ocean-wave) infinite;
+}
+
+.ds-animate-wave {
+  animation: ds-oceanWave var(--duration-slowest) var(--ease-ocean-wave) infinite;
+}
+
+.ds-animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-neutral-100) 0%,
+    var(--color-neutral-50) 50%,
+    var(--color-neutral-100) 100%
+  );
+  background-size: 200% 100%;
+  animation: ds-oceanShimmer 2s linear infinite;
+}
+
+.ds-animate-spin {
+  animation: ds-spin 1s linear infinite;
+}
+
+.ds-animate-pulse {
+  animation: ds-pulse 2s var(--ease-default) infinite;
+}
+
+/* 延迟工具类 */
+.ds-delay-100 { animation-delay: 100ms; }
+.ds-delay-200 { animation-delay: 200ms; }
+.ds-delay-300 { animation-delay: 300ms; }
+.ds-delay-400 { animation-delay: 400ms; }
+.ds-delay-500 { animation-delay: 500ms; }
+.ds-delay-700 { animation-delay: 700ms; }
+.ds-delay-1000 { animation-delay: 1000ms; }
+
+/* 减弱动效偏好 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---- 涟漪效果 Ripple Effect ---- */
+.ds-ripple-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.ds-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  animation: ds-ripple 0.6s ease-out forwards;
+  pointer-events: none;
+}
+
+/* ---- 骨架屏 Skeleton ---- */
+.ds-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-neutral-100) 25%,
+    var(--color-neutral-50) 50%,
+    var(--color-neutral-100) 75%
+  );
+  background-size: 200% 100%;
+  animation: ds-oceanShimmer 1.5s ease-in-out infinite;
+  border-radius: var(--radius-md);
+}
+
+.ds-skeleton-text {
+  height: 16px;
+  margin-bottom: var(--space-2);
+}
+
+.ds-skeleton-title {
+  height: 24px;
+  width: 60%;
+  margin-bottom: var(--space-3);
+}
+
+.ds-skeleton-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+}
+
+.ds-skeleton-image {
+  height: 200px;
+  border-radius: var(--radius-lg);
+}

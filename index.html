@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小窑湾海钓产业园 — 设计系统</title>
+
+  <!-- 字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Playfair+Display:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- html2pdf.js（本地） -->
+  <script src="js/html2pdf.bundle.min.js"></script>
+
+  <!-- 样式 -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/motion-demo.css">
+  <link rel="stylesheet" href="css/scheme-switcher.css">
+  <link rel="stylesheet" href="css/sections.css">
+</head>
+<body>
+
+
+  <!-- 遮罩 -->
+  <div class="ds-overlay" id="overlay"></div>
+
+  <!-- ========== 侧边导航 ========== -->
+  <aside class="ds-sidebar" id="sidebar">
+    <div class="ds-sidebar-header">
+      <div class="ds-sidebar-logo">小窑湾</div>
+      <div class="ds-sidebar-subtitle">海钓产业园 · 设计系统 v1.0</div>
+    </div>
+    <nav class="ds-sidebar-nav">
+      <div class="ds-nav-group">
+        <div class="ds-nav-group-title">概览</div>
+        <a class="ds-nav-item active" data-section="overview">
+          <svg class="ds-nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          设计概览
+        </a>
+      </div>
+      <div class="ds-nav-group">
+        <div class="ds-nav-group-title">基础</div>
+        <a class="ds-nav-item" data-section="colors">
+          <svg class="ds-nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a7 7 0 0 0 0 20 7 7 0 0 0 0-20z" fill="currentColor" opacity="0.15"/></svg>
+          色彩系统
+        </a>
+        <a class="ds-nav-item" data-section="typography">
+          <svg class="ds-nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+          字体排版
+        </a>
+        <a class="ds-nav-item" data-section="spacing">
+          <svg class="ds-nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+          间距与网格
+        </a>
+        <a class="ds-nav-item" data-section="shadows">
+          <svg class="ds-nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 17l4-8 4 4 4-6"/></svg>
+          阴影与圆角
+        </a>
+      </div>
+      <div class="ds-nav-group">
+        <div class="ds-nav-group-title">组件</div>
+        <a class="ds-nav-item" data-section="buttons">
+          <svg class="ds-nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="8" rx="2"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          按钮
+        </a>
+        <a class="ds-nav-item" data-section="cards">
+          <svg class="ds-nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
+          卡片
+        </a>
+        <a class="ds-nav-item" data-section="forms">
+          <svg class="ds-nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          表单
+        </a>
+        <a class="ds-nav-item" data-section="tags">
+          <svg class="ds-nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          标签与徽章
+        </a>
+        <a class="ds-nav-item" data-section="navigation">
+          <svg class="ds-nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+          导航与标签页
+        </a>
+        <a class="ds-nav-item" data-section="feedback">
+          <svg class="ds-nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          反馈组件
+        </a>
+      </div>
+      <div class="ds-nav-group">
+        <div class="ds-nav-group-title">规范</div>
+        <a class="ds-nav-item" data-section="motion">
+          <svg class="ds-nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          动效规范
+        </a>
+        <a class="ds-nav-item" data-section="images">
+          <svg class="ds-nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          图片规范
+        </a>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- ========== 主内容区 ========== -->
+  <main class="ds-main" id="mainContent">
+
+    <!-- 顶部栏 -->
+    <header class="ds-topbar">
+      <button class="ds-mobile-toggle" id="mobileToggle" aria-label="打开导航">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <div class="ds-topbar-title">小窑湾海钓产业园 · Design System</div>
+      <div class="ds-topbar-actions">
+        <span class="ds-tag ds-tag-primary">v1.0</span>
+        <span class="ds-tag ds-tag-secondary">2026.04</span>
+      </div>
+    </header>
+
+    <div class="ds-content">
+
+      <!-- ==================== 概览 ==================== -->
+      <section class="ds-section" id="overview">
+        <div class="ds-hero">
+          <div class="ds-hero-bg"></div>
+          <div class="ds-hero-content">
+            <div class="ds-hero-badge ds-animate-fadeIn">
+              <span style="width:6px;height:6px;border-radius:50%;background:var(--color-secondary-400);"></span>
+              Design System v1.0
+            </div>
+            <h1 class="ds-hero-title ds-animate-fadeInUp">小窑湾海钓产业园<br>品牌设计系统</h1>
+            <p class="ds-hero-desc ds-animate-fadeInUp ds-delay-200">
+              面向综合文旅型海钓产业园的全套视觉规范体系。涵盖色彩、字体、间距、组件库与动效规范，服务于园区导览、品牌宣传、线下物料等多场景应用。
+            </p>
+            <div class="ds-component-row ds-animate-fadeInUp ds-delay-300">
+              <button class="ds-btn ds-btn-primary ds-btn-lg" id="btnBrowseSpecs">浏览设计规范</button>
+              <button class="ds-btn ds-btn-outline ds-btn-lg" id="btnDownloadPdf" style="border-color:rgba(255,255,255,0.3);color:var(--color-neutral-0);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                下载设计规范 PDF
+              </button>
+            </div>
+            <div class="ds-hero-stats ds-animate-fadeInUp ds-delay-500">
+              <div>
+                <div class="ds-hero-stat-value">3</div>
+                <div class="ds-hero-stat-label">品牌色系</div>
+              </div>
+              <div>
+                <div class="ds-hero-stat-value">10</div>
+                <div class="ds-hero-stat-label">字号阶梯</div>
+              </div>
+              <div>
+                <div class="ds-hero-stat-value">15+</div>
+                <div class="ds-hero-stat-label">基础组件</div>
+              </div>
+              <div>
+                <div class="ds-hero-stat-value">12</div>
+                <div class="ds-hero-stat-label">动效规范</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 设计原则 -->
+        <div class="ds-subsection" style="margin-top:var(--space-12);">
+          <h2 class="ds-subsection-title">设计原则</h2>
+          <div class="ds-grid ds-grid-3">
+            <div class="ds-preview-card">
+              <div style="font-size:var(--text-2xl);margin-bottom:var(--space-3);color:var(--color-primary-500);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </div>
+              <h3 style="font-family:var(--font-heading);font-size:var(--text-lg);font-weight:var(--weight-semibold);color:var(--color-neutral-900);margin-bottom:var(--space-2);">海洋原生</h3>
+              <p style="font-size:var(--text-sm);color:var(--color-neutral-500);line-height:var(--leading-relaxed);">色彩与视觉语言源自黄海海域的自然调性，以深海蓝为根基，暖沙金为点缀，传递海洋文旅的松弛与活力。</p>
+            </div>
+            <div class="ds-preview-card">
+              <div style="font-size:var(--text-2xl);margin-bottom:var(--space-3);color:var(--color-secondary-500);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              </div>
+              <h3 style="font-family:var(--font-heading);font-size:var(--text-lg);font-weight:var(--weight-semibold);color:var(--color-neutral-900);margin-bottom:var(--space-2);">系统一致</h3>
+              <p style="font-size:var(--text-sm);color:var(--color-neutral-500);line-height:var(--leading-relaxed);">通过设计令牌（Design Tokens）统一管理所有视觉参数，确保从线上到线下、从导览到印刷的全链路一致性。</p>
+            </div>
+            <div class="ds-preview-card">
+              <div style="font-size:var(--text-2xl);margin-bottom:var(--space-3);color:var(--color-accent-500);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </div>
+              <h3 style="font-family:var(--font-heading);font-size:var(--text-lg);font-weight:var(--weight-semibold);color:var(--color-neutral-900);margin-bottom:var(--space-2);">灵动有度</h3>
+              <p style="font-size:var(--text-sm);color:var(--color-neutral-500);line-height:var(--leading-relaxed);">动效设计借鉴海浪节律，以自然流畅的过渡和恰到好处的微交互，提升体验品质感而非炫技。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="ds-divider"></div>
+
+      <!-- ==================== 色彩系统 ==================== -->
+      <section class="ds-section" id="colors">
+        <div class="ds-section-header">
+          <div class="ds-section-label">Foundation</div>
+          <h2 class="ds-section-title">色彩系统</h2>
+          <p class="ds-section-desc">以黄海海域的自然色彩为灵感，构建主色 + 3 辅助色的四级色阶体系。内置 24 套精选色彩方案，支持实时切换预览与自定义方案创建。</p>
+        </div>
+
+        <!-- 色彩方案切换器 -->
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">色彩方案 Color Schemes</h3>
+          <p style="font-size:var(--text-sm);color:var(--color-neutral-500);margin-bottom:var(--space-5);max-width:600px;">
+            选择内置方案可实时预览整套设计系统的色彩变化。点击「自定义方案」可创建专属配色。
+          </p>
+
+          <div class="ds-scheme-switcher">
+            <div class="ds-scheme-switcher-header">
+              <div class="ds-scheme-switcher-title">内置方案</div>
+              <div class="ds-scheme-count" id="schemeCount">12 套</div>
+            </div>
+            <div class="ds-scheme-grid" id="schemeGrid">
+              <!-- 由 JS 动态渲染 -->
+            </div>
+          </div>
+
+          <!-- 自定义方案 -->
+          <div style="margin-top:var(--space-4);">
+            <button class="ds-btn ds-btn-outline ds-btn-sm" id="openCustomPanel">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              自定义方案
+            </button>
+          </div>
+
+          <div class="ds-custom-panel" id="customPanel">
+            <div class="ds-custom-panel-header">
+              <div class="ds-custom-panel-title">创建自定义方案</div>
+              <button class="ds-btn ds-btn-ghost ds-btn-sm" id="closeCustomPanel">收起</button>
+            </div>
+
+            <div class="ds-custom-fields">
+              <div class="ds-custom-field">
+                <div class="ds-custom-field-label">方案名称</div>
+                <input class="ds-custom-hex-input" type="text" id="customName" placeholder="输入方案名称" style="font-family:var(--font-body);">
+              </div>
+              <div class="ds-custom-field">
+                <div class="ds-custom-field-label">主色 Primary (500)</div>
+                <div class="ds-custom-input-row">
+                  <input type="color" class="ds-custom-color-picker" id="customPrimary" value="#1A7FA0">
+                  <input class="ds-custom-hex-input" type="text" id="customPrimaryHex" value="#1A7FA0" maxlength="7">
+                </div>
+              </div>
+              <div class="ds-custom-field">
+                <div class="ds-custom-field-label">辅助色 1 (500)</div>
+                <div class="ds-custom-input-row">
+                  <input type="color" class="ds-custom-color-picker" id="customSecondary1" value="#D4A654">
+                  <input class="ds-custom-hex-input" type="text" id="customSecondary1Hex" value="#D4A654" maxlength="7">
+                </div>
+              </div>
+              <div class="ds-custom-field">
+                <div class="ds-custom-field-label">辅助色 2 (500)</div>
+                <div class="ds-custom-input-row">
+                  <input type="color" class="ds-custom-color-picker" id="customSecondary2" value="#6FB4CE">
+                  <input class="ds-custom-hex-input" type="text" id="customSecondary2Hex" value="#6FB4CE" maxlength="7">
+                </div>
+              </div>
+              <div class="ds-custom-field">
+                <div class="ds-custom-field-label">辅助色 3 (500)</div>
+                <div class="ds-custom-input-row">
+                  <input type="color" class="ds-custom-color-picker" id="customSecondary3" value="#E8644A">
+                  <input class="ds-custom-hex-input" type="text" id="customSecondary3Hex" value="#E8644A" maxlength="7">
+                </div>
+              </div>
+            </div>
+
+            <!-- 实时预览 -->
+            <div class="ds-custom-preview">
+              <div class="ds-custom-preview-swatch" id="previewPrimary" style="background:#1A7FA0;">主色</div>
+              <div class="ds-custom-preview-swatch" id="previewSecondary1" style="background:#D4A654;">辅助色 1</div>
+              <div class="ds-custom-preview-swatch" id="previewSecondary2" style="background:#6FB4CE;">辅助色 2</div>
+              <div class="ds-custom-preview-swatch" id="previewSecondary3" style="background:#E8644A;">辅助色 3</div>
+            </div>
+
+            <div class="ds-custom-actions">
+              <button class="ds-btn ds-btn-primary ds-btn-sm" id="applyCustomScheme">应用此方案</button>
+              <button class="ds-btn ds-btn-secondary ds-btn-sm" id="saveCustomScheme">保存方案</button>
+              <button class="ds-btn ds-btn-ghost ds-btn-sm" id="resetCustomScheme">重置</button>
+            </div>
+
+            <!-- 已保存的自定义方案 -->
+            <div class="ds-custom-saved" id="customSavedSection" style="display:none;">
+              <div class="ds-custom-saved-title">已保存的自定义方案</div>
+              <div class="ds-custom-saved-list" id="customSavedList"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 配色插画展示 -->
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">配色插画 Illustration</h3>
+          <p style="font-size:var(--text-sm);color:var(--color-neutral-500);margin-bottom:var(--space-5);max-width:600px;">
+            以海钓场景为载体，实时展示当前配色方案在实际插画中的视觉效果。切换上方配色方案，插画颜色将同步变化。
+          </p>
+          <div class="ds-fishing-illust" id="fishingIllust">
+            <img src="assets/fishing-illustration.svg" alt="海钓插画" style="width:100%;height:auto;display:block;border-radius:12px;">
+          </div>
+          <!-- 当前方案色标 -->
+          <div id="illustColorLabel" style="margin-top:var(--space-4);display:flex;align-items:center;gap:var(--space-3);font-size:var(--text-xs);color:var(--color-neutral-500);">
+            <span>当前方案：</span>
+            <span id="illustSchemeName" style="font-weight:var(--weight-semibold);color:var(--color-neutral-800);">深海蓝</span>
+            <span style="display:flex;gap:4px;margin-left:var(--space-2);">
+              <span id="illustDotP" style="width:12px;height:12px;border-radius:50%;display:inline-block;"></span>
+              <span id="illustDotS1" style="width:12px;height:12px;border-radius:50%;display:inline-block;"></span>
+              <span id="illustDotS2" style="width:12px;height:12px;border-radius:50%;display:inline-block;"></span>
+              <span id="illustDotS3" style="width:12px;height:12px;border-radius:50%;display:inline-block;"></span>
+            </span>
+          </div>
+        </div>
+
+        <!-- 主色 -->
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title" id="primaryTitle">主色 Primary — 深海蓝</h3>
+          <p style="font-size:var(--text-sm);color:var(--color-neutral-500);margin-bottom:var(--space-5);max-width:600px;">
+            核心品牌色，传递专业、可靠、海洋原生感。适用于主要操作、关键信息、品牌标识等场景。50-900 共 10 级色阶，覆盖从浅底到深色的全范围使用需求。
+          </p>
+          <div class="ds-color-row">
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-primary-50)"></div><div class="ds-color-chip-label">50</div><div class="ds-color-chip-hex">#E8F4F8</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-primary-100)"></div><div class="ds-color-chip-label">100</div><div class="ds-color-chip-hex">#C5E3ED</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-primary-200)"></div><div class="ds-color-chip-label">200</div><div class="ds-color-chip-hex">#9DCDE0</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-primary-300)"></div><div class="ds-color-chip-label">300</div><div class="ds-color-chip-hex">#6FB4CE</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-primary-400)"></div><div class="ds-color-chip-label">400</div><div class="ds-color-chip-hex">#4A9FBE</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-primary-500)"></div><div class="ds-color-chip-label">500</div><div class="ds-color-chip-hex">#1A7FA0</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-primary-600)"></div><div class="ds-color-chip-label">600</div><div class="ds-color-chip-hex">#156B89</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-primary-700)"></div><div class="ds-color-chip-label">700</div><div class="ds-color-chip-hex">#105872</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-primary-800)"></div><div class="ds-color-chip-label">800</div><div class="ds-color-chip-hex">#0B455A</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-primary-900)"></div><div class="ds-color-chip-label">900</div><div class="ds-color-chip-hex">#063243</div></div>
+          </div>
+          <div class="ds-code" style="margin-top:var(--space-4);"><span class="token-comment">/* 主色使用示例 */</span><br><span class="token-prop">--color-primary-500</span>: <span class="token-val">#1A7FA0</span>;  <span class="token-comment">/* 品牌主色 — 按钮、链接、重点标识 */</span><br><span class="token-prop">--color-primary-100</span>: <span class="token-val">#C5E3ED</span>; <span class="token-comment">/* 浅底色 — 卡片背景、选中态 */</span><br><span class="token-prop">--color-primary-700</span>: <span class="token-val">#105872</span>; <span class="token-comment">/* 深色 — 标题、深底文字 */</span></div>
+        </div>
+
+        <!-- 辅助色 1 -->
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title" id="secondaryTitle">辅助色 1 Secondary 1 — 暖沙金</h3>
+          <p style="font-size:var(--text-sm);color:var(--color-neutral-500);margin-bottom:var(--space-5);max-width:600px;">
+            灵感源自大连海岸线的金色沙滩与夕阳余晖。用于次要操作、价格标注、星级评分、成就徽章等需要温暖感的场景。
+          </p>
+          <div class="ds-color-row">
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-secondary1-50)"></div><div class="ds-color-chip-label">50</div><div class="ds-color-chip-hex">#FDF8F0</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-secondary1-100)"></div><div class="ds-color-chip-label">100</div><div class="ds-color-chip-hex">#F9EDD8</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-secondary1-200)"></div><div class="ds-color-chip-label">200</div><div class="ds-color-chip-hex">#F3DEBB</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-secondary1-300)"></div><div class="ds-color-chip-label">300</div><div class="ds-color-chip-hex">#ECCC98</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-secondary1-400)"></div><div class="ds-color-chip-label">400</div><div class="ds-color-chip-hex">#E5BD7A</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-secondary1-500)"></div><div class="ds-color-chip-label">500</div><div class="ds-color-chip-hex">#D4A654</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-secondary1-600)"></div><div class="ds-color-chip-label">600</div><div class="ds-color-chip-hex">#C49342</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-secondary1-700)"></div><div class="ds-color-chip-label">700</div><div class="ds-color-chip-hex">#A87A35</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-secondary1-800)"></div><div class="ds-color-chip-label">800</div><div class="ds-color-chip-hex">#8C6229</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-secondary1-900)"></div><div class="ds-color-chip-label">900</div><div class="ds-color-chip-hex">#704B1E</div></div>
+          </div>
+        </div>
+
+        <!-- 辅助色 2 -->
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title" id="secondary2Title">辅助色 2 Secondary 2 — 海沫青</h3>
+          <p style="font-size:var(--text-sm);color:var(--color-neutral-500);margin-bottom:var(--space-5);max-width:600px;">
+            灵感来自海面泡沫与浅滩碧波。用于信息提示、图标点缀、数据可视化、辅助背景等需要清新感的场景。
+          </p>
+          <div class="ds-color-row">
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-secondary2-50)"></div><div class="ds-color-chip-label">50</div><div class="ds-color-chip-hex">#EDF7F5</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-secondary2-100)"></div><div class="ds-color-chip-label">100</div><div class="ds-color-chip-hex">#CCEBE5</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-secondary2-200)"></div><div class="ds-color-chip-label">200</div><div class="ds-color-chip-hex">#A4DCD2</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-secondary2-300)"></div><div class="ds-color-chip-label">300</div><div class="ds-color-chip-hex">#74C8BA</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-secondary2-400)"></div><div class="ds-color-chip-label">400</div><div class="ds-color-chip-hex">#50B8A6</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-secondary2-500)"></div><div class="ds-color-chip-label">500</div><div class="ds-color-chip-hex">#2BA692</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-secondary2-600)"></div><div class="ds-color-chip-label">600</div><div class="ds-color-chip-hex">#249181</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-secondary2-700)"></div><div class="ds-color-chip-label">700</div><div class="ds-color-chip-hex">#1C7A6C</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-secondary2-800)"></div><div class="ds-color-chip-label">800</div><div class="ds-color-chip-hex">#156358</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-secondary2-900)"></div><div class="ds-color-chip-label">900</div><div class="ds-color-chip-hex">#0E4C43</div></div>
+          </div>
+        </div>
+
+        <!-- 辅助色 3 -->
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title" id="secondary3Title">辅助色 3 Secondary 3 — 珊瑚橙</h3>
+          <p style="font-size:var(--text-sm);color:var(--color-neutral-500);margin-bottom:var(--space-5);max-width:600px;">
+            用于高亮标注、交互反馈、重要提醒等需要视觉突出的场景。克制使用，控制面积在 5% 以内。
+          </p>
+          <div class="ds-color-row">
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-secondary3-50)"></div><div class="ds-color-chip-label">50</div><div class="ds-color-chip-hex">#FFF0EC</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-secondary3-100)"></div><div class="ds-color-chip-label">100</div><div class="ds-color-chip-hex">#FFD9CF</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-secondary3-200)"></div><div class="ds-color-chip-label">200</div><div class="ds-color-chip-hex">#FFBFAD</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-secondary3-300)"></div><div class="ds-color-chip-label">300</div><div class="ds-color-chip-hex">#FFA08A</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-secondary3-400)"></div><div class="ds-color-chip-label">400</div><div class="ds-color-chip-hex">#FF876C</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-secondary3-500)"></div><div class="ds-color-chip-label">500</div><div class="ds-color-chip-hex">#E8644A</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-secondary3-600)"></div><div class="ds-color-chip-label">600</div><div class="ds-color-chip-hex">#D4503A</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-secondary3-700)"></div><div class="ds-color-chip-label">700</div><div class="ds-color-chip-hex">#B33D2D</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-secondary3-800)"></div><div class="ds-color-chip-label">800</div><div class="ds-color-chip-hex">#922B20</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-secondary3-900)"></div><div class="ds-color-chip-label">900</div><div class="ds-color-chip-hex">#711A13</div></div>
+          </div>
+        </div>
+
+        <!-- 中性色 -->
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">中性色 Neutral — 墨岩灰</h3>
+          <p style="font-size:var(--text-sm);color:var(--color-neutral-500);margin-bottom:var(--space-5);max-width:600px;">
+            用于文本、边框、背景等结构性元素。从纯白到近黑共 11 级，确保在深浅背景上都有足够的对比度。
+          </p>
+          <div class="ds-color-row">
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-neutral-0);border:1px solid var(--color-neutral-200)"></div><div class="ds-color-chip-label">0</div><div class="ds-color-chip-hex">#FFFFFF</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-neutral-50)"></div><div class="ds-color-chip-label">50</div><div class="ds-color-chip-hex">#F7F8FA</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-neutral-100)"></div><div class="ds-color-chip-label">100</div><div class="ds-color-chip-hex">#ECEEF2</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-neutral-200)"></div><div class="ds-color-chip-label">200</div><div class="ds-color-chip-hex">#D5D8E0</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-neutral-300)"></div><div class="ds-color-chip-label">300</div><div class="ds-color-chip-hex">#B0B5C2</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-neutral-400)"></div><div class="ds-color-chip-label">400</div><div class="ds-color-chip-hex">#8A90A2</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-neutral-500)"></div><div class="ds-color-chip-label">500</div><div class="ds-color-chip-hex">#6B7285</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-neutral-600)"></div><div class="ds-color-chip-label">600</div><div class="ds-color-chip-hex">#545A6B</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-neutral-700)"></div><div class="ds-color-chip-label">700</div><div class="ds-color-chip-hex">#3E4351</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-neutral-800)"></div><div class="ds-color-chip-label">800</div><div class="ds-color-chip-hex">#2A2E3A</div></div>
+            <div class="ds-color-chip"><div class="ds-color-chip-block" style="background:var(--color-neutral-900)"></div><div class="ds-color-chip-label">900</div><div class="ds-color-chip-hex">#1A1D26</div></div>
+          </div>
+        </div>
+
+        <!-- 语义色 -->
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">语义色 Semantic</h3>
+          <p style="font-size:var(--text-sm);color:var(--color-neutral-500);margin-bottom:var(--space-5);max-width:600px;">
+            用于传达系统状态信息。每种语义色提供浅底（50）、标准（500）、深色（700）三个层级，适配不同背景需求。
+          </p>
+          <div class="ds-grid ds-grid-4">
+            <div class="ds-preview-card" style="text-align:center;">
+              <div style="width:48px;height:48px;border-radius:var(--radius-full);background:var(--color-success-500);margin:0 auto var(--space-3);"></div>
+              <div style="font-weight:var(--weight-semibold);font-size:var(--text-sm);color:var(--color-neutral-800);margin-bottom:var(--space-1);">成功 Success</div>
+              <div style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-neutral-400);">#10B981</div>
+              <div style="margin-top:var(--space-3);display:flex;gap:var(--space-2);justify-content:center;">
+                <div style="width:24px;height:24px;border-radius:var(--radius-sm);background:var(--color-success-50);"></div>
+                <div style="width:24px;height:24px;border-radius:var(--radius-sm);background:var(--color-success-500);"></div>
+                <div style="width:24px;height:24px;border-radius:var(--radius-sm);background:var(--color-success-700);"></div>
+              </div>
+            </div>
+            <div class="ds-preview-card" style="text-align:center;">
+              <div style="width:48px;height:48px;border-radius:var(--radius-full);background:var(--color-warning-500);margin:0 auto var(--space-3);"></div>
+              <div style="font-weight:var(--weight-semibold);font-size:var(--text-sm);color:var(--color-neutral-800);margin-bottom:var(--space-1);">警告 Warning</div>
+              <div style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-neutral-400);">#F59E0B</div>
+              <div style="margin-top:var(--space-3);display:flex;gap:var(--space-2);justify-content:center;">
+                <div style="width:24px;height:24px;border-radius:var(--radius-sm);background:var(--color-warning-50);"></div>
+                <div style="width:24px;height:24px;border-radius:var(--radius-sm);background:var(--color-warning-500);"></div>
+                <div style="width:24px;height:24px;border-radius:var(--radius-sm);background:var(--color-warning-700);"></div>
+              </div>
+            </div>
+            <div class="ds-preview-card" style="text-align:center;">
+              <div style="width:48px;height:48px;border-radius:var(--radius-full);background:var(--color-error-500);margin:0 auto var(--space-3);"></div>
+              <div style="font-weight:var(--weight-semibold);font-size:var(--text-sm);color:var(--color-neutral-800);margin-bottom:var(--space-1);">错误 Error</div>
+              <div style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-neutral-400);">#EF4444</div>
+              <div style="margin-top:var(--space-3);display:flex;gap:var(--space-2);justify-content:center;">
+                <div style="width:24px;height:24px;border-radius:var(--radius-sm);background:var(--color-error-50);"></div>
+                <div style="width:24px;height:24px;border-radius:var(--radius-sm);background:var(--color-error-500);"></div>
+                <div style="width:24px;height:24px;border-radius:var(--radius-sm);background:var(--color-error-700);"></div>
+              </div>
+            </div>
+            <div class="ds-preview-card" style="text-align:center;">
+              <div style="width:48px;height:48px;border-radius:var(--radius-full);background:var(--color-info-500);margin:0 auto var(--space-3);"></div>
+              <div style="font-weight:var(--weight-semibold);font-size:var(--text-sm);color:var(--color-neutral-800);margin-bottom:var(--space-1);">信息 Info</div>
+              <div style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-neutral-400);">#3B82F6</div>
+              <div style="margin-top:var(--space-3);display:flex;gap:var(--space-2);justify-content:center;">
+                <div style="width:24px;height:24px;border-radius:var(--radius-sm);background:var(--color-info-50);"></div>
+                <div style="width:24px;height:24px;border-radius:var(--radius-sm);background:var(--color-info-500);"></div>
+                <div style="width:24px;height:24px;border-radius:var(--radius-sm);background:var(--color-info-700);"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 渐变 -->
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">海洋渐变 Gradients</h3>
+          <p style="font-size:var(--text-sm);color:var(--color-neutral-500);margin-bottom:var(--space-5);max-width:600px;">
+            预设渐变组合，灵感来自小窑湾海域不同时段的光影变化。适用于 Hero 区域、卡片装饰、分割线等大面积色块场景。
+          </p>
+          <div class="ds-gradient-showcase">
+            <div class="ds-gradient-item" style="background:var(--gradient-ocean-dawn);">
+              <div><div class="ds-gradient-name">Ocean Dawn</div><div class="ds-gradient-var">--gradient-ocean-dawn</div></div>
+            </div>
+            <div class="ds-gradient-item" style="background:var(--gradient-ocean-deep);">
+              <div><div class="ds-gradient-name">Ocean Deep</div><div class="ds-gradient-var">--gradient-ocean-deep</div></div>
+            </div>
+            <div class="ds-gradient-item" style="background:var(--gradient-ocean-sunset);">
+              <div><div class="ds-gradient-name">Ocean Sunset</div><div class="ds-gradient-var">--gradient-ocean-sunset</div></div>
+            </div>
+            <div class="ds-gradient-item" style="background:var(--gradient-ocean-surface);">
+              <div><div class="ds-gradient-name">Ocean Surface</div><div class="ds-gradient-var">--gradient-ocean-surface</div></div>
+            </div>
+            <div class="ds-gradient-item" style="background:var(--gradient-gold-shimmer);">
+              <div><div class="ds-gradient-name">Gold Shimmer</div><div class="ds-gradient-var">--gradient-gold-shimmer</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 色彩使用规范 -->
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">色彩使用规范</h3>
+          <div class="ds-grid ds-grid-2">
+            <div class="ds-preview-card">
+              <h4 style="font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--color-success-700);margin-bottom:var(--space-3);">推荐做法</h4>
+              <ul style="font-size:var(--text-sm);color:var(--color-neutral-600);line-height:var(--leading-relaxed);display:flex;flex-direction:column;gap:var(--space-2);">
+                <li style="display:flex;align-items:flex-start;gap:var(--space-2);"><span style="color:var(--color-success-500);flex-shrink:0;">&#10003;</span>主色占页面色彩面积的 60% 以上</li>
+                <li style="display:flex;align-items:flex-start;gap:var(--space-2);"><span style="color:var(--color-success-500);flex-shrink:0;">&#10003;</span>辅助色 1 占页面色彩面积的 25%，用于次要操作和背景</li>
+                <li style="display:flex;align-items:flex-start;gap:var(--space-2);"><span style="color:var(--color-success-500);flex-shrink:0;">&#10003;</span>辅助色 2 占 15%，辅助色 3 控制在 5% 以内</li>
+                <li style="display:flex;align-items:flex-start;gap:var(--space-2);"><span style="color:var(--color-success-500);flex-shrink:0;">&#10003;</span>文字与背景对比度不低于 4.5:1 (WCAG AA)</li>
+              </ul>
+            </div>
+            <div class="ds-preview-card">
+              <h4 style="font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--color-error-700);margin-bottom:var(--space-3);">避免做法</h4>
+              <ul style="font-size:var(--text-sm);color:var(--color-neutral-600);line-height:var(--leading-relaxed);display:flex;flex-direction:column;gap:var(--space-2);">
+                <li style="display:flex;align-items:flex-start;gap:var(--space-2);"><span style="color:var(--color-error-500);flex-shrink:0;">&#10007;</span>在深色背景上使用低对比度的浅色文字</li>
+                <li style="display:flex;align-items:flex-start;gap:var(--space-2);"><span style="color:var(--color-error-500);flex-shrink:0;">&#10007;</span>同时使用三种品牌色作为大面积背景</li>
+                <li style="display:flex;align-items:flex-start;gap:var(--space-2);"><span style="color:var(--color-error-500);flex-shrink:0;">&#10007;</span>语义色用于纯装饰目的</li>
+                <li style="display:flex;align-items:flex-start;gap:var(--space-2);"><span style="color:var(--color-error-500);flex-shrink:0;">&#10007;</span>渐变方向和角度不统一</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="ds-divider"></div>
+
+      <!-- ==================== 字体排版 ==================== -->
+      <section class="ds-section" id="typography">
+        <div class="ds-section-header">
+          <div class="ds-section-label">Foundation</div>
+          <h2 class="ds-section-title">字体排版</h2>
+          <p class="ds-section-desc">中英双语字体体系，兼顾中文阅读体验与英文设计表现力。采用 DM Sans + Noto Sans SC 的组合，在标题场景搭配 Playfair Display 提升品质感。</p>
+        </div>
+
+        <!-- 字体族 -->
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">字体族 Font Families</h3>
+          <div class="ds-grid ds-grid-3">
+            <div class="ds-preview-card">
+              <div style="font-family:var(--font-display);font-size:var(--text-3xl);font-weight:var(--weight-bold);color:var(--color-neutral-900);margin-bottom:var(--space-3);">Playfair Display</div>
+              <div style="font-size:var(--text-xs);color:var(--color-neutral-400);font-family:var(--font-mono);margin-bottom:var(--space-2);">--font-display</div>
+              <p style="font-size:var(--text-sm);color:var(--color-neutral-500);">展示字体。用于 Hero 标题、品牌大字、视觉焦点文字。搭配中文回退 Noto Serif SC。</p>
+            </div>
+            <div class="ds-preview-card">
+              <div style="font-family:var(--font-heading);font-size:var(--text-3xl);font-weight:var(--weight-bold);color:var(--color-neutral-900);margin-bottom:var(--space-3);">DM Sans</div>
+              <div style="font-size:var(--text-xs);color:var(--color-neutral-400);font-family:var(--font-mono);margin-bottom:var(--space-2);">--font-heading / --font-body</div>
+              <p style="font-size:var(--text-sm);color:var(--color-neutral-500);">界面字体。用于标题、正文、按钮、标签等所有 UI 文字。搭配中文回退 Noto Sans SC。</p>
+            </div>
+            <div class="ds-preview-card">
+              <div style="font-family:var(--font-mono);font-size:var(--text-3xl);font-weight:var(--weight-bold);color:var(--color-neutral-900);margin-bottom:var(--space-3);">JetBrains Mono</div>
+              <div style="font-size:var(--text-xs);color:var(--color-neutral-400);font-family:var(--font-mono);margin-bottom:var(--space-2);">--font-mono</div>
+              <p style="font-size:var(--text-sm);color:var(--color-neutral-500);">等宽字体。用于代码展示、数值数据、技术参数等场景。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 字号阶梯 -->
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">字号阶梯 Type Scale</h3>
+          <p style="font-size:var(--text-sm);color:var(--color-neutral-500);margin-bottom:var(--space-5);max-width:600px;">
+            基于 Major Third (1.25) 比例构建的 10 级字号阶梯，从 12px 到 61px，覆盖所有使用场景。
+          </p>
+
+          <div class="ds-type-specimen">
+            <div class="ds-type-meta"><span class="ds-type-meta-label">6xl</span><span class="ds-type-meta-detail">3.815rem / 61px</span></div>
+            <div class="ds-type-sample" style="font-family:var(--font-display);font-size:var(--text-6xl);font-weight:var(--weight-bold);">小窑湾海钓</div>
+          </div>
+          <div class="ds-type-specimen">
+            <div class="ds-type-meta"><span class="ds-type-meta-label">5xl</span><span class="ds-type-meta-detail">3.052rem / 49px</span></div>
+            <div class="ds-type-sample" style="font-family:var(--font-display);font-size:var(--text-5xl);font-weight:var(--weight-bold);">沉浸式海钓体验</div>
+          </div>
+          <div class="ds-type-specimen">
+            <div class="ds-type-meta"><span class="ds-type-meta-label">4xl</span><span class="ds-type-meta-detail">2.441rem / 39px</span></div>
+            <div class="ds-type-sample" style="font-family:var(--font-heading);font-size:var(--text-4xl);font-weight:var(--weight-bold);">探索黄海深处的垂钓乐趣</div>
+          </div>
+          <div class="ds-type-specimen">
+            <div class="ds-type-meta"><span class="ds-type-meta-label">3xl</span><span class="ds-type-meta-detail">1.953rem / 31px</span></div>
+            <div class="ds-type-sample" style="font-family:var(--font-heading);font-size:var(--text-3xl);font-weight:var(--weight-semibold);">海钓产业集聚区</div>
+          </div>
+          <div class="ds-type-specimen">
+            <div class="ds-type-meta"><span class="ds-type-meta-label">2xl</span><span class="ds-type-meta-detail">1.563rem / 25px</span></div>
+            <div class="ds-type-sample" style="font-family:var(--font-heading);font-size:var(--text-2xl);font-weight:var(--weight-semibold);">专业赛事 · 亲子休闲 · 海上娱乐</div>
+          </div>
+          <div class="ds-type-specimen">
+            <div class="ds-type-meta"><span class="ds-type-meta-label">xl</span><span class="ds-type-meta-detail">1.25rem / 20px</span></div>
+            <div class="ds-type-sample" style="font-family:var(--font-heading);font-size:var(--text-xl);font-weight:var(--weight-medium);">园区导览与活动信息</div>
+          </div>
+          <div class="ds-type-specimen">
+            <div class="ds-type-meta"><span class="ds-type-meta-label">lg</span><span class="ds-type-meta-detail">1.125rem / 18px</span></div>
+            <div class="ds-type-sample" style="font-size:var(--text-lg);">小窑湾这片黄海近岸海域面积约3万平方米，是大连东部地区优质的天然钓场。</div>
+          </div>
+          <div class="ds-type-specimen">
+            <div class="ds-type-meta"><span class="ds-type-meta-label">base</span><span class="ds-type-meta-detail">1rem / 16px</span></div>
+            <div class="ds-type-sample" style="font-size:var(--text-base);">常年可钓黑鱼、黄鱼、海鲈鱼、梭鱼等。夏季鲅鱼成群，正是路亚垂钓的最佳时节。</div>
+          </div>
+          <div class="ds-type-specimen">
+            <div class="ds-type-meta"><span class="ds-type-meta-label">sm</span><span class="ds-type-meta-detail">0.875rem / 14px</span></div>
+            <div class="ds-type-sample" style="font-size:var(--text-sm);color:var(--color-neutral-500);">园区配备多艘钓鱼艇，每艘均配备鱼探雷达，即便初次体验海钓的新手也能轻松感受连杆上鱼的乐趣。</div>
+          </div>
+          <div class="ds-type-specimen">
+            <div class="ds-type-meta"><span class="ds-type-meta-label">xs</span><span class="ds-type-meta-detail">0.75rem / 12px</span></div>
+            <div class="ds-type-sample" style="font-size:var(--text-xs);color:var(--color-neutral-400);">开放时间：08:00 — 18:00 · 泊位预约：提前24小时</div>
+          </div>
+        </div>
+
+        <!-- 字重 -->
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">字重 Font Weight</h3>
+          <div class="ds-grid ds-grid-3">
+            <div class="ds-preview-card" style="text-align:center;padding:var(--space-5);">
+              <div style="font-size:var(--text-2xl);font-weight:var(--weight-light);color:var(--color-neutral-800);margin-bottom:var(--space-2);">Light 300</div>
+              <div style="font-size:var(--text-xs);color:var(--color-neutral-400);font-family:var(--font-mono);">--weight-light</div>
+            </div>
+            <div class="ds-preview-card" style="text-align:center;padding:var(--space-5);">
+              <div style="font-size:var(--text-2xl);font-weight:var(--weight-regular);color:var(--color-neutral-800);margin-bottom:var(--space-2);">Regular 400</div>
+              <div style="font-size:var(--text-xs);color:var(--color-neutral-400);font-family:var(--font-mono);">--weight-regular</div>
+            </div>
+            <div class="ds-preview-card" style="text-align:center;padding:var(--space-5);">
+              <div style="font-size:var(--text-2xl);font-weight:var(--weight-medium);color:var(--color-neutral-800);margin-bottom:var(--space-2);">Medium 500</div>
+              <div style="font-size:var(--text-xs);color:var(--color-neutral-400);font-family:var(--font-mono);">--weight-medium</div>
+            </div>
+            <div class="ds-preview-card" style="text-align:center;padding:var(--space-5);">
+              <div style="font-size:var(--text-2xl);font-weight:var(--weight-semibold);color:var(--color-neutral-800);margin-bottom:var(--space-2);">Semibold 600</div>
+              <div style="font-size:var(--text-xs);color:var(--color-neutral-400);font-family:var(--font-mono);">--weight-semibold</div>
+            </div>
+            <div class="ds-preview-card" style="text-align:center;padding:var(--space-5);">
+              <div style="font-size:var(--text-2xl);font-weight:var(--weight-bold);color:var(--color-neutral-800);margin-bottom:var(--space-2);">Bold 700</div>
+              <div style="font-size:var(--text-xs);color:var(--color-neutral-400);font-family:var(--font-mono);">--weight-bold</div>
+            </div>
+            <div class="ds-preview-card" style="text-align:center;padding:var(--space-5);">
+              <div style="font-size:var(--text-2xl);font-weight:var(--weight-black);color:var(--color-neutral-800);margin-bottom:var(--space-2);">Black 900</div>
+              <div style="font-size:var(--text-xs);color:var(--color-neutral-400);font-family:var(--font-mono);">--weight-black</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="ds-divider"></div>
+
+      <!-- ==================== 间距与网格 ==================== -->
+      <section class="ds-section" id="spacing">
+        <div class="ds-section-header">
+          <div class="ds-section-label">Foundation</div>
+          <h2 class="ds-section-title">间距与网格</h2>
+          <p class="ds-section-desc">基于 4px 基准单位的间距系统，确保所有元素间的节奏感一致。12 列弹性网格提供灵活的布局能力。</p>
+        </div>
+
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">间距阶梯 Spacing Scale</h3>
+          <div class="ds-space-demo">
+            <div class="ds-space-bar"><div class="ds-space-bar-block" style="height:4px;"></div><div class="ds-space-bar-value">4px</div><div class="ds-space-bar-label">--space-1</div></div>
+            <div class="ds-space-bar"><div class="ds-space-bar-block" style="height:8px;"></div><div class="ds-space-bar-value">8px</div><div class="ds-space-bar-label">--space-2</div></div>
+            <div class="ds-space-bar"><div class="ds-space-bar-block" style="height:12px;"></div><div class="ds-space-bar-value">12px</div><div class="ds-space-bar-label">--space-3</div></div>
+            <div class="ds-space-bar"><div class="ds-space-bar-block" style="height:16px;"></div><div class="ds-space-bar-value">16px</div><div class="ds-space-bar-label">--space-4</div></div>
+            <div class="ds-space-bar"><div class="ds-space-bar-block" style="height:24px;"></div><div class="ds-space-bar-value">24px</div><div class="ds-space-bar-label">--space-6</div></div>
+            <div class="ds-space-bar"><div class="ds-space-bar-block" style="height:32px;"></div><div class="ds-space-bar-value">32px</div><div class="ds-space-bar-label">--space-8</div></div>
+            <div class="ds-space-bar"><div class="ds-space-bar-block" style="height:48px;"></div><div class="ds-space-bar-value">48px</div><div class="ds-space-bar-label">--space-12</div></div>
+            <div class="ds-space-bar"><div class="ds-space-bar-block" style="height:64px;"></div><div class="ds-space-bar-value">64px</div><div class="ds-space-bar-label">--space-16</div></div>
+            <div class="ds-space-bar"><div class="ds-space-bar-block" style="height:96px;"></div><div class="ds-space-bar-value">96px</div><div class="ds-space-bar-label">--space-24</div></div>
+            <div class="ds-space-bar"><div class="ds-space-bar-block" style="height:128px;"></div><div class="ds-space-bar-value">128px</div><div class="ds-space-bar-label">--space-32</div></div>
+          </div>
+        </div>
+
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">网格系统 Grid</h3>
+          <p style="font-size:var(--text-sm);color:var(--color-neutral-500);margin-bottom:var(--space-5);max-width:600px;">
+            12 列网格，间距 24px (var(--space-6))，最大容器宽度 1440px。支持响应式断点：640px / 768px / 1024px / 1280px。
+          </p>
+          <div class="ds-component-showcase">
+            <div class="ds-component-showcase-title">12 列网格示意</div>
+            <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:var(--space-2);">
+              <div style="background:var(--color-primary-100);border-radius:var(--radius-sm);height:40px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-primary-700);font-weight:var(--weight-semibold);">1</div>
+              <div style="background:var(--color-primary-100);border-radius:var(--radius-sm);height:40px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-primary-700);font-weight:var(--weight-semibold);">2</div>
+              <div style="background:var(--color-primary-100);border-radius:var(--radius-sm);height:40px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-primary-700);font-weight:var(--weight-semibold);">3</div>
+              <div style="background:var(--color-primary-100);border-radius:var(--radius-sm);height:40px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-primary-700);font-weight:var(--weight-semibold);">4</div>
+              <div style="background:var(--color-primary-100);border-radius:var(--radius-sm);height:40px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-primary-700);font-weight:var(--weight-semibold);">5</div>
+              <div style="background:var(--color-primary-100);border-radius:var(--radius-sm);height:40px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-primary-700);font-weight:var(--weight-semibold);">6</div>
+              <div style="background:var(--color-primary-100);border-radius:var(--radius-sm);height:40px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-primary-700);font-weight:var(--weight-semibold);">7</div>
+              <div style="background:var(--color-primary-100);border-radius:var(--radius-sm);height:40px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-primary-700);font-weight:var(--weight-semibold);">8</div>
+              <div style="background:var(--color-primary-100);border-radius:var(--radius-sm);height:40px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-primary-700);font-weight:var(--weight-semibold);">9</div>
+              <div style="background:var(--color-primary-100);border-radius:var(--radius-sm);height:40px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-primary-700);font-weight:var(--weight-semibold);">10</div>
+              <div style="background:var(--color-primary-100);border-radius:var(--radius-sm);height:40px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-primary-700);font-weight:var(--weight-semibold);">11</div>
+              <div style="background:var(--color-primary-100);border-radius:var(--radius-sm);height:40px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-primary-700);font-weight:var(--weight-semibold);">12</div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:var(--space-2);margin-top:var(--space-3);">
+              <div style="grid-column:span 4;background:var(--color-primary-200);border-radius:var(--radius-sm);height:40px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-primary-800);font-weight:var(--weight-semibold);">4 cols</div>
+              <div style="grid-column:span 4;background:var(--color-secondary-200);border-radius:var(--radius-sm);height:40px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-secondary-800);font-weight:var(--weight-semibold);">4 cols</div>
+              <div style="grid-column:span 4;background:var(--color-accent-200);border-radius:var(--radius-sm);height:40px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-accent-800);font-weight:var(--weight-semibold);">4 cols</div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:var(--space-2);margin-top:var(--space-3);">
+              <div style="grid-column:span 8;background:var(--color-primary-200);border-radius:var(--radius-sm);height:40px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-primary-800);font-weight:var(--weight-semibold);">8 cols</div>
+              <div style="grid-column:span 4;background:var(--color-secondary-200);border-radius:var(--radius-sm);height:40px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-secondary-800);font-weight:var(--weight-semibold);">4 cols</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="ds-divider"></div>
+
+      <!-- ==================== 阴影与圆角 ==================== -->
+      <section class="ds-section" id="shadows">
+        <div class="ds-section-header">
+          <div class="ds-section-label">Foundation</div>
+          <h2 class="ds-section-title">阴影与圆角</h2>
+          <p class="ds-section-desc">层级分明的阴影系统与统一的圆角规范，构建界面元素的立体感与一致性。</p>
+        </div>
+
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">阴影层级 Shadows</h3>
+          <div class="ds-shadow-demo">
+            <div class="ds-shadow-box" style="box-shadow:var(--shadow-xs);">xs</div>
+            <div class="ds-shadow-box" style="box-shadow:var(--shadow-sm);">sm</div>
+            <div class="ds-shadow-box" style="box-shadow:var(--shadow-md);">md</div>
+            <div class="ds-shadow-box" style="box-shadow:var(--shadow-lg);">lg</div>
+            <div class="ds-shadow-box" style="box-shadow:var(--shadow-xl);">xl</div>
+            <div class="ds-shadow-box" style="box-shadow:var(--shadow-2xl);">2xl</div>
+          </div>
+          <div style="margin-top:var(--space-6);">
+            <div class="ds-grid ds-grid-2">
+              <div class="ds-shadow-box" style="box-shadow:var(--shadow-ocean);width:auto;">Ocean — 海洋主题阴影</div>
+              <div class="ds-shadow-box" style="box-shadow:var(--shadow-gold);width:auto;">Gold — 金色主题阴影</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">圆角规范 Border Radius</h3>
+          <div class="ds-radius-demo">
+            <div class="ds-radius-box" style="border-radius:var(--radius-none);">none</div>
+            <div class="ds-radius-box" style="border-radius:var(--radius-sm);">4px</div>
+            <div class="ds-radius-box" style="border-radius:var(--radius-md);">8px</div>
+            <div class="ds-radius-box" style="border-radius:var(--radius-lg);">12px</div>
+            <div class="ds-radius-box" style="border-radius:var(--radius-xl);">16px</div>
+            <div class="ds-radius-box" style="border-radius:var(--radius-2xl);">24px</div>
+            <div class="ds-radius-box" style="border-radius:var(--radius-full);">full</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="ds-divider"></div>
+
+      <!-- ==================== 按钮 ==================== -->
+      <section class="ds-section" id="buttons">
+        <div class="ds-section-header">
+          <div class="ds-section-label">Components</div>
+          <h2 class="ds-section-title">按钮</h2>
+          <p class="ds-section-desc">按钮是用户交互的核心触点。提供 4 种视觉变体、3 种尺寸，以及图标按钮、禁用态等完整状态。</p>
+        </div>
+
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">视觉变体 Variants</h3>
+          <div class="ds-component-showcase">
+            <div class="ds-component-showcase-title">按钮类型</div>
+            <div class="ds-component-row">
+              <button class="ds-btn ds-btn-primary">Primary 主要</button>
+              <button class="ds-btn ds-btn-secondary">Secondary 次要</button>
+              <button class="ds-btn ds-btn-outline">Outline 描边</button>
+              <button class="ds-btn ds-btn-ghost">Ghost 幽灵</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">尺寸 Sizes</h3>
+          <div class="ds-component-showcase">
+            <div class="ds-component-showcase-title">三种尺寸</div>
+            <div class="ds-component-row" style="align-items:center;">
+              <button class="ds-btn ds-btn-primary ds-btn-sm">Small 小</button>
+              <button class="ds-btn ds-btn-primary">Default 中</button>
+              <button class="ds-btn ds-btn-primary ds-btn-lg">Large 大</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">状态 States</h3>
+          <div class="ds-component-showcase">
+            <div class="ds-component-showcase-title">交互状态</div>
+            <div class="ds-component-row">
+              <button class="ds-btn ds-btn-primary">默认 Default</button>
+              <button class="ds-btn ds-btn-primary" disabled>禁用 Disabled</button>
+              <button class="ds-btn ds-btn-primary" style="opacity:0.7;cursor:wait;">加载中...</button>
+            </div>
+          </div>
+          <div class="ds-component-showcase" style="margin-top:var(--space-4);">
+            <div class="ds-component-showcase-title">图标按钮</div>
+            <div class="ds-component-row">
+              <button class="ds-btn ds-btn-primary ds-btn-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+              <button class="ds-btn ds-btn-secondary ds-btn-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </button>
+              <button class="ds-btn ds-btn-outline ds-btn-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">使用规范</h3>
+          <div class="ds-grid ds-grid-2">
+            <div class="ds-preview-card">
+              <h4 style="font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--color-success-700);margin-bottom:var(--space-3);">推荐做法</h4>
+              <ul style="font-size:var(--text-sm);color:var(--color-neutral-600);line-height:var(--leading-relaxed);display:flex;flex-direction:column;gap:var(--space-2);">
+                <li style="display:flex;align-items:flex-start;gap:var(--space-2);"><span style="color:var(--color-success-500);flex-shrink:0;">&#10003;</span>每个操作区域只使用一个主要按钮</li>
+                <li style="display:flex;align-items:flex-start;gap:var(--space-2);"><span style="color:var(--color-success-500);flex-shrink:0;">&#10003;</span>按钮文案简洁明确，描述操作结果</li>
+                <li style="display:flex;align-items:flex-start;gap:var(--space-2);"><span style="color:var(--color-success-500);flex-shrink:0;">&#10003;</span>危险操作使用红色语义色而非通用主色</li>
+              </ul>
+            </div>
+            <div class="ds-preview-card">
+              <h4 style="font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--color-error-700);margin-bottom:var(--space-3);">避免做法</h4>
+              <ul style="font-size:var(--text-sm);color:var(--color-neutral-600);line-height:var(--leading-relaxed);display:flex;flex-direction:column;gap:var(--space-2);">
+                <li style="display:flex;align-items:flex-start;gap:var(--space-2);"><span style="color:var(--color-error-500);flex-shrink:0;">&#10007;</span>同一区域使用多个主要按钮</li>
+                <li style="display:flex;align-items:flex-start;gap:var(--space-2);"><span style="color:var(--color-error-500);flex-shrink:0;">&#10007;</span>按钮文案过长或含糊不清</li>
+                <li style="display:flex;align-items:flex-start;gap:var(--space-2);"><span style="color:var(--color-error-500);flex-shrink:0;">&#10007;</span>在小空间内使用大号按钮</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="ds-divider"></div>
+
+      <!-- ==================== 卡片 ==================== -->
+      <section class="ds-section" id="cards">
+        <div class="ds-section-header">
+          <div class="ds-section-label">Components</div>
+          <h2 class="ds-section-title">卡片</h2>
+          <p class="ds-section-desc">卡片是信息承载的核心容器。提供标准卡片和特色卡片两种变体，支持图片、正文、操作区等灵活组合。</p>
+        </div>
+
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">标准卡片 Standard Card</h3>
+          <div class="ds-grid ds-grid-3">
+            <div class="ds-card">
+              <div class="ds-card-image" style="background:var(--gradient-ocean-surface);display:flex;align-items:center;justify-content:center;">
+                <span style="color:rgba(255,255,255,0.6);font-size:var(--text-sm);">图片占位</span>
+              </div>
+              <div class="ds-card-body">
+                <div style="display:flex;gap:var(--space-2);margin-bottom:var(--space-3);">
+                  <span class="ds-badge ds-badge-primary">海钓</span>
+                  <span class="ds-badge ds-badge-secondary">热门</span>
+                </div>
+                <h3 class="ds-card-title">路亚垂钓体验</h3>
+                <p class="ds-card-text">夏季鲅鱼成群，配备专业鱼探雷达，新手也能轻松连杆上鱼。</p>
+              </div>
+              <div class="ds-card-footer">
+                <span style="font-family:var(--font-mono);font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--color-secondary-600);">¥388/人</span>
+                <button class="ds-btn ds-btn-primary ds-btn-sm">预约</button>
+              </div>
+            </div>
+            <div class="ds-card">
+              <div class="ds-card-image" style="background:var(--gradient-ocean-sunset);display:flex;align-items:center;justify-content:center;">
+                <span style="color:rgba(255,255,255,0.6);font-size:var(--text-sm);">图片占位</span>
+              </div>
+              <div class="ds-card-body">
+                <div style="display:flex;gap:var(--space-2);margin-bottom:var(--space-3);">
+                  <span class="ds-badge ds-badge-accent">限时</span>
+                </div>
+                <h3 class="ds-card-title">海上日落巡航</h3>
+                <p class="ds-card-text">乘游钓艇出海，欣赏黄海日落，享受海上烧烤与现捞现烹。</p>
+              </div>
+              <div class="ds-card-footer">
+                <span style="font-family:var(--font-mono);font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--color-secondary-600);">¥568/人</span>
+                <button class="ds-btn ds-btn-primary ds-btn-sm">预约</button>
+              </div>
+            </div>
+            <div class="ds-card">
+              <div class="ds-card-image" style="background:var(--gradient-ocean-deep);display:flex;align-items:center;justify-content:center;">
+                <span style="color:rgba(255,255,255,0.6);font-size:var(--text-sm);">图片占位</span>
+              </div>
+              <div class="ds-card-body">
+                <div style="display:flex;gap:var(--space-2);margin-bottom:var(--space-3);">
+                  <span class="ds-badge ds-badge-primary">赛事</span>
+                  <span class="ds-badge ds-badge-success">报名中</span>
+                </div>
+                <h3 class="ds-card-title">海钓俱乐部联赛</h3>
+                <p class="ds-card-text">专业海钓赛事，组队参与，丰厚奖品等你来拿。</p>
+              </div>
+              <div class="ds-card-footer">
+                <span style="font-size:var(--text-sm);color:var(--color-neutral-400);">2026.06.15</span>
+                <button class="ds-btn ds-btn-outline ds-btn-sm">详情</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">特色卡片 Featured Card</h3>
+          <div class="ds-grid ds-grid-2">
+            <div class="ds-card-featured">
+              <div class="ds-card-body">
+                <span class="ds-badge ds-badge-secondary" style="margin-bottom:var(--space-4);display:inline-flex;">园区推荐</span>
+                <h3 style="font-family:var(--font-heading);font-size:var(--text-2xl);font-weight:var(--weight-bold);color:var(--color-neutral-900);margin-bottom:var(--space-3);">一站式海钓产业生态</h3>
+                <p style="font-size:var(--text-sm);color:var(--color-neutral-500);line-height:var(--leading-relaxed);margin-bottom:var(--space-5);">园区已与海发集团签署多项合作协议，积极引进国内外知名装备品牌，引入专业钓具品牌落户，打造从装备到体验的完整产业链。</p>
+                <button class="ds-btn ds-btn-primary">了解更多</button>
+              </div>
+            </div>
+            <div class="ds-card-featured">
+              <div class="ds-card-body">
+                <span class="ds-badge ds-badge-accent" style="margin-bottom:var(--space-4);display:inline-flex;">全新体验</span>
+                <h3 style="font-family:var(--font-heading);font-size:var(--text-2xl);font-weight:var(--weight-bold);color:var(--color-neutral-900);margin-bottom:var(--space-3);">智慧调度平台</h3>
+                <p style="font-size:var(--text-sm);color:var(--color-neutral-500);line-height:var(--leading-relaxed);margin-bottom:var(--space-5);">所有游钓艇纳入智慧调度平台统一管理运营，满足海钓、海上休闲娱乐等全系列海上项目需求。</p>
+                <button class="ds-btn ds-btn-secondary">查看详情</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="ds-divider"></div>
+
+      <!-- ==================== 表单 ==================== -->
+      <section class="ds-section" id="forms">
+        <div class="ds-section-header">
+          <div class="ds-section-label">Components</div>
+          <h2 class="ds-section-title">表单</h2>
+          <p class="ds-section-desc">表单是用户输入的核心组件。包含输入框、文本域、下拉选择、复选框等，支持默认、聚焦、错误等完整状态。</p>
+        </div>
+
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">输入组件</h3>
+          <div class="ds-grid ds-grid-2">
+            <div class="ds-component-showcase">
+              <div class="ds-component-showcase-title">输入框 Input</div>
+              <div style="display:flex;flex-direction:column;gap:var(--space-5);">
+                <div>
+                  <label class="ds-label">姓名</label>
+                  <input class="ds-input" type="text" placeholder="请输入您的姓名">
+                </div>
+                <div>
+                  <label class="ds-label">手机号码</label>
+                  <input class="ds-input" type="tel" placeholder="请输入手机号码">
+                  <div class="ds-helper-text">用于接收预约确认短信</div>
+                </div>
+                <div>
+                  <label class="ds-label">邮箱地址</label>
+                  <input class="ds-input ds-input-error" type="email" value="invalid-email">
+                  <div class="ds-error-text">请输入有效的邮箱地址</div>
+                </div>
+              </div>
+            </div>
+            <div class="ds-component-showcase">
+              <div class="ds-component-showcase-title">其他表单组件</div>
+              <div style="display:flex;flex-direction:column;gap:var(--space-5);">
+                <div>
+                  <label class="ds-label">垂钓项目</label>
+                  <select class="ds-input ds-select">
+                    <option>请选择垂钓项目</option>
+                    <option>路亚垂钓体验</option>
+                    <option>海上日落巡航</option>
+                    <option>深海船钓</option>
+                    <option>岸钓教学</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="ds-label">备注信息</label>
+                  <textarea class="ds-input ds-textarea" placeholder="如有特殊需求请在此说明..."></textarea>
+                </div>
+                <div style="display:flex;align-items:center;gap:var(--space-3);">
+                  <input type="checkbox" class="ds-checkbox" checked>
+                  <label style="font-size:var(--text-sm);color:var(--color-neutral-600);cursor:pointer;">我已阅读并同意《海钓安全须知》</label>
+                </div>
+                <div style="display:flex;align-items:center;gap:var(--space-3);">
+                  <button class="ds-toggle active" id="toggleDemo"></button>
+                  <span style="font-size:var(--text-sm);color:var(--color-neutral-600);">接收活动推送通知</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="ds-divider"></div>
+
+      <!-- ==================== 标签与徽章 ==================== -->
+      <section class="ds-section" id="tags">
+        <div class="ds-section-header">
+          <div class="ds-section-label">Components</div>
+          <h2 class="ds-section-title">标签与徽章</h2>
+          <p class="ds-section-desc">用于分类标记、状态指示、信息高亮等场景。提供品牌色和语义色两种体系。</p>
+        </div>
+
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">品牌色标签</h3>
+          <div class="ds-component-showcase">
+            <div class="ds-component-row">
+              <span class="ds-badge ds-badge-primary">海钓体验</span>
+              <span class="ds-badge ds-badge-secondary">园区推荐</span>
+              <span class="ds-badge ds-badge-accent">限时活动</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">语义色标签</h3>
+          <div class="ds-component-showcase">
+            <div class="ds-component-row">
+              <span class="ds-badge ds-badge-success">营业中</span>
+              <span class="ds-badge ds-badge-warning">即将满员</span>
+              <span class="ds-badge ds-badge-error">已售罄</span>
+              <span class="ds-badge ds-badge-primary">预约中</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="ds-divider"></div>
+
+      <!-- ==================== 导航与标签页 ==================== -->
+      <section class="ds-section" id="navigation">
+        <div class="ds-section-header">
+          <div class="ds-section-label">Components</div>
+          <h2 class="ds-section-title">导航与标签页</h2>
+          <p class="ds-section-desc">导航组件用于页面间的跳转与内容分类切换。</p>
+        </div>
+
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">导航链接 Nav Links</h3>
+          <div class="ds-component-showcase">
+            <div class="ds-component-row">
+              <a class="ds-nav-link active" href="#">首页</a>
+              <a class="ds-nav-link" href="#">海钓项目</a>
+              <a class="ds-nav-link" href="#">赛事活动</a>
+              <a class="ds-nav-link" href="#">园区服务</a>
+              <a class="ds-nav-link" href="#">关于我们</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">标签页 Tabs</h3>
+          <div class="ds-component-showcase">
+            <div class="ds-tabs" id="tabsDemo">
+              <button class="ds-tab active" data-tab="tab1">全部项目</button>
+              <button class="ds-tab" data-tab="tab2">海钓体验</button>
+              <button class="ds-tab" data-tab="tab3">海上娱乐</button>
+              <button class="ds-tab" data-tab="tab4">餐饮民宿</button>
+            </div>
+            <div style="padding:var(--space-6) 0);font-size:var(--text-sm);color:var(--color-neutral-500);">
+              标签页内容区域 — 点击上方标签可切换（交互演示）
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="ds-divider"></div>
+
+      <!-- ==================== 反馈组件 ==================== -->
+      <section class="ds-section" id="feedback">
+        <div class="ds-section-header">
+          <div class="ds-section-label">Components</div>
+          <h2 class="ds-section-title">反馈组件</h2>
+          <p class="ds-section-desc">用于向用户传达操作结果、系统状态等反馈信息。</p>
+        </div>
+
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">提示 Toast</h3>
+          <div class="ds-grid ds-grid-2">
+            <div class="ds-toast">
+              <svg class="ds-toast-icon" viewBox="0 0 24 24" fill="none" stroke="var(--color-success-500)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <div>
+                <div class="ds-toast-title">预约成功</div>
+                <div class="ds-toast-message">您的海钓体验已预约成功，请注意查收短信。</div>
+              </div>
+            </div>
+            <div class="ds-toast">
+              <svg class="ds-toast-icon" viewBox="0 0 24 24" fill="none" stroke="var(--color-error-500)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+              <div>
+                <div class="ds-toast-title">预约失败</div>
+                <div class="ds-toast-message">该时段已满员，请选择其他时间。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">进度条 Progress</h3>
+          <div class="ds-component-showcase">
+            <div style="display:flex;flex-direction:column;gap:var(--space-5);">
+              <div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:var(--space-2);">
+                  <span style="font-size:var(--text-sm);color:var(--color-neutral-600);">泊位预约进度</span>
+                  <span style="font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--color-primary-600);">75%</span>
+                </div>
+                <div class="ds-progress"><div class="ds-progress-bar" style="width:75%;"></div></div>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:var(--space-2);">
+                  <span style="font-size:var(--text-sm);color:var(--color-neutral-600);">赛事报名名额</span>
+                  <span style="font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--color-secondary-600);">45%</span>
+                </div>
+                <div class="ds-progress"><div class="ds-progress-bar" style="width:45%;"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">工具提示 Tooltip</h3>
+          <div class="ds-component-showcase">
+            <div class="ds-component-row" style="gap:var(--space-8);">
+              <div class="ds-tooltip-wrapper">
+                <button class="ds-btn ds-btn-outline ds-btn-sm">悬停查看提示</button>
+                <div class="ds-tooltip">海钓体验预约</div>
+              </div>
+              <div class="ds-tooltip-wrapper">
+                <button class="ds-btn ds-btn-ghost ds-btn-sm">泊位信息</button>
+                <div class="ds-tooltip">当前可用泊位：12个</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="ds-divider"></div>
+
+      <!-- ==================== 动效规范 ==================== -->
+      <section class="ds-section" id="motion">
+        <div class="ds-section-header">
+          <div class="ds-section-label">Guidelines</div>
+          <h2 class="ds-section-title">动效规范</h2>
+          <p class="ds-section-desc">动效设计借鉴海浪的自然节律，以流畅、克制、有意义为原则。所有动效均遵循统一的时长和缓动曲线规范。</p>
+        </div>
+
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">时长规范 Duration</h3>
+          <p style="font-size:var(--text-sm);color:var(--color-neutral-500);margin-bottom:var(--space-5);max-width:600px;">
+            根据交互的重要性和复杂度选择合适的动画时长。微交互使用快速时长，页面转场使用标准时长，装饰性动画使用慢速时长。
+          </p>
+          <div class="ds-grid ds-grid-5">
+            <div class="ds-preview-card" style="text-align:center;padding:var(--space-4);">
+              <div class="ds-motion-box ds-animate-fadeIn" style="width:40px;height:40px;margin:0 auto var(--space-3);animation-duration:100ms;"></div>
+              <div style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-neutral-800);font-weight:var(--weight-semibold);">100ms</div>
+              <div style="font-size:10px;color:var(--color-neutral-400);margin-top:var(--space-1);">Instant</div>
+            </div>
+            <div class="ds-preview-card" style="text-align:center;padding:var(--space-4);">
+              <div class="ds-motion-box ds-animate-fadeIn" style="width:40px;height:40px;margin:0 auto var(--space-3);animation-duration:200ms;"></div>
+              <div style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-neutral-800);font-weight:var(--weight-semibold);">200ms</div>
+              <div style="font-size:10px;color:var(--color-neutral-400);margin-top:var(--space-1);">Fast</div>
+            </div>
+            <div class="ds-preview-card" style="text-align:center;padding:var(--space-4);">
+              <div class="ds-motion-box ds-animate-fadeIn" style="width:40px;height:40px;margin:0 auto var(--space-3);animation-duration:300ms;"></div>
+              <div style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-neutral-800);font-weight:var(--weight-semibold);">300ms</div>
+              <div style="font-size:10px;color:var(--color-neutral-400);margin-top:var(--space-1);">Normal</div>
+            </div>
+            <div class="ds-preview-card" style="text-align:center;padding:var(--space-4);">
+              <div class="ds-motion-box ds-animate-fadeIn" style="width:40px;height:40px;margin:0 auto var(--space-3);animation-duration:500ms;"></div>
+              <div style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-neutral-800);font-weight:var(--weight-semibold);">500ms</div>
+              <div style="font-size:10px;color:var(--color-neutral-400);margin-top:var(--space-1);">Slow</div>
+            </div>
+            <div class="ds-preview-card" style="text-align:center;padding:var(--space-4);">
+              <div class="ds-motion-box ds-animate-fadeIn" style="width:40px;height:40px;margin:0 auto var(--space-3);animation-duration:1000ms;"></div>
+              <div style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-neutral-800);font-weight:var(--weight-semibold);">1000ms</div>
+              <div style="font-size:10px;color:var(--color-neutral-400);margin-top:var(--space-1);">Slowest</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">缓动曲线 Easing</h3>
+          <p style="font-size:var(--text-sm);color:var(--color-neutral-500);margin-bottom:var(--space-5);max-width:600px;">
+            不同的缓动曲线传达不同的运动感。默认使用 ease-out 让元素自然减速，弹性曲线用于需要活力的反馈场景。
+          </p>
+          <div class="ds-grid ds-grid-3">
+            <div class="ds-preview-card">
+              <div style="height:60px;background:var(--color-neutral-100);border-radius:var(--radius-md);position:relative;overflow:hidden;margin-bottom:var(--space-3);">
+                <div class="ds-motion-box-circle" style="position:absolute;top:50%;left:0;width:20px;height:20px;animation:ds-ease-demo 2s ease-in-out infinite;"></div>
+              </div>
+              <div style="font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--color-neutral-800);">Ease In Out</div>
+              <div style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-neutral-400);margin-top:var(--space-1);">--ease-default</div>
+              <div style="font-size:var(--text-xs);color:var(--color-neutral-500);margin-top:var(--space-2);">标准过渡、通用场景</div>
+            </div>
+            <div class="ds-preview-card">
+              <div style="height:60px;background:var(--color-neutral-100);border-radius:var(--radius-md);position:relative;overflow:hidden;margin-bottom:var(--space-3);">
+                <div class="ds-motion-box-circle" style="position:absolute;top:50%;left:0;width:20px;height:20px;background:var(--color-primary-500);animation:ds-ease-demo 2s cubic-bezier(0, 0, 0.2, 1) infinite;"></div>
+              </div>
+              <div style="font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--color-neutral-800);">Ease Out</div>
+              <div style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-neutral-400);margin-top:var(--space-1);">--ease-out</div>
+              <div style="font-size:var(--text-xs);color:var(--color-neutral-500);margin-top:var(--space-2);">入场动画、展开收起</div>
+            </div>
+            <div class="ds-preview-card">
+              <div style="height:60px;background:var(--color-neutral-100);border-radius:var(--radius-md);position:relative;overflow:hidden;margin-bottom:var(--space-3);">
+                <div class="ds-motion-box-circle" style="position:absolute;top:50%;left:0;width:20px;height:20px;background:var(--color-secondary-500);animation:ds-ease-demo 2s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;"></div>
+              </div>
+              <div style="font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--color-neutral-800);">Bounce</div>
+              <div style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-neutral-400);margin-top:var(--space-1);">--ease-bounce</div>
+              <div style="font-size:var(--text-xs);color:var(--color-neutral-500);margin-top:var(--space-2);">按钮反馈、成功提示</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">入场动画 Entrance</h3>
+          <div class="ds-component-showcase">
+            <div class="ds-component-showcase-title">方向性入场</div>
+            <div class="ds-motion-demo">
+              <div style="text-align:center;">
+                <div class="ds-motion-box ds-animate-fadeInUp" style="margin:0 auto var(--space-2);"></div>
+                <div style="font-size:var(--text-xs);color:var(--color-neutral-400);">Fade In Up</div>
+              </div>
+              <div style="text-align:center;">
+                <div class="ds-motion-box ds-animate-fadeInDown" style="margin:0 auto var(--space-2);"></div>
+                <div style="font-size:var(--text-xs);color:var(--color-neutral-400);">Fade In Down</div>
+              </div>
+              <div style="text-align:center;">
+                <div class="ds-motion-box ds-animate-fadeInLeft" style="margin:0 auto var(--space-2);"></div>
+                <div style="font-size:var(--text-xs);color:var(--color-neutral-400);">Fade In Left</div>
+              </div>
+              <div style="text-align:center;">
+                <div class="ds-motion-box ds-animate-fadeInRight" style="margin:0 auto var(--space-2);"></div>
+                <div style="font-size:var(--text-xs);color:var(--color-neutral-400);">Fade In Right</div>
+              </div>
+              <div style="text-align:center;">
+                <div class="ds-motion-box ds-animate-scaleIn" style="margin:0 auto var(--space-2);"></div>
+                <div style="font-size:var(--text-xs);color:var(--color-neutral-400);">Scale In</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">海洋主题动画 Ocean Animations</h3>
+          <div class="ds-component-showcase">
+            <div class="ds-component-showcase-title">品牌专属动效</div>
+            <div class="ds-motion-demo">
+              <div style="text-align:center;">
+                <div class="ds-motion-box ds-animate-float" style="margin:0 auto var(--space-2);border-radius:var(--radius-full);"></div>
+                <div style="font-size:var(--text-xs);color:var(--color-neutral-400);">Float 漂浮</div>
+              </div>
+              <div style="text-align:center;">
+                <div class="ds-motion-box ds-animate-wave" style="margin:0 auto var(--space-2);"></div>
+                <div style="font-size:var(--text-xs);color:var(--color-neutral-400);">Wave 波浪</div>
+              </div>
+              <div style="text-align:center;">
+                <div class="ds-motion-box ds-animate-shimmer" style="margin:0 auto var(--space-2);"></div>
+                <div style="font-size:var(--text-xs);color:var(--color-neutral-400);">Shimmer 微光</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">加载动画 Loading</h3>
+          <div class="ds-grid ds-grid-3">
+            <div class="ds-component-showcase" style="text-align:center;">
+              <div class="ds-component-showcase-title">旋转加载</div>
+              <div style="width:40px;height:40px;border:3px solid var(--color-primary-100);border-top-color:var(--color-primary-500);border-radius:var(--radius-full);margin:0 auto;" class="ds-animate-spin"></div>
+            </div>
+            <div class="ds-component-showcase" style="text-align:center;">
+              <div class="ds-component-showcase-title">脉冲加载</div>
+              <div class="ds-loading-dots" style="justify-content:center;">
+                <div class="ds-loading-dot"></div>
+                <div class="ds-loading-dot"></div>
+                <div class="ds-loading-dot"></div>
+              </div>
+            </div>
+            <div class="ds-component-showcase" style="text-align:center;">
+              <div class="ds-component-showcase-title">条形加载</div>
+              <div class="ds-loading-bars" style="justify-content:center;">
+                <div class="ds-loading-bar"></div>
+                <div class="ds-loading-bar"></div>
+                <div class="ds-loading-bar"></div>
+                <div class="ds-loading-bar"></div>
+                <div class="ds-loading-bar"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">骨架屏 Skeleton</h3>
+          <div class="ds-grid ds-grid-2">
+            <div class="ds-skeleton-demo">
+              <div class="ds-component-showcase-title" style="margin-bottom:var(--space-4);">卡片骨架屏</div>
+              <div style="background:var(--gradient-ocean-dawn);height:120px;border-radius:var(--radius-lg);margin-bottom:var(--space-4);" class="ds-skeleton"></div>
+              <div class="ds-skeleton" style="height:16px;width:40%;margin-bottom:var(--space-3);"></div>
+              <div class="ds-skeleton" style="height:20px;width:80%;margin-bottom:var(--space-2);"></div>
+              <div class="ds-skeleton" style="height:14px;width:100%;margin-bottom:var(--space-2);"></div>
+              <div class="ds-skeleton" style="height:14px;width:60%;"></div>
+            </div>
+            <div class="ds-skeleton-demo">
+              <div class="ds-component-showcase-title" style="margin-bottom:var(--space-4);">列表骨架屏</div>
+              <div class="ds-skeleton-card-demo" style="margin-bottom:var(--space-4);">
+                <div class="ds-skeleton-avatar-demo ds-skeleton"></div>
+                <div class="ds-skeleton-lines">
+                  <div class="ds-skeleton" style="height:14px;width:60%;margin-bottom:var(--space-2);"></div>
+                  <div class="ds-skeleton" style="height:12px;width:100%;margin-bottom:var(--space-2);"></div>
+                  <div class="ds-skeleton" style="height:12px;width:80%;"></div>
+                </div>
+              </div>
+              <div class="ds-skeleton-card-demo" style="margin-bottom:var(--space-4);">
+                <div class="ds-skeleton-avatar-demo ds-skeleton"></div>
+                <div class="ds-skeleton-lines">
+                  <div class="ds-skeleton" style="height:14px;width:50%;margin-bottom:var(--space-2);"></div>
+                  <div class="ds-skeleton" style="height:12px;width:90%;margin-bottom:var(--space-2);"></div>
+                  <div class="ds-skeleton" style="height:12px;width:70%;"></div>
+                </div>
+              </div>
+              <div class="ds-skeleton-card-demo">
+                <div class="ds-skeleton-avatar-demo ds-skeleton"></div>
+                <div class="ds-skeleton-lines">
+                  <div class="ds-skeleton" style="height:14px;width:55%;margin-bottom:var(--space-2);"></div>
+                  <div class="ds-skeleton" style="height:12px;width:85%;margin-bottom:var(--space-2);"></div>
+                  <div class="ds-skeleton" style="height:12px;width:75%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">动效使用原则</h3>
+          <div class="ds-grid ds-grid-2">
+            <div class="ds-preview-card">
+              <h4 style="font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--color-success-700);margin-bottom:var(--space-3);">核心原则</h4>
+              <ul style="font-size:var(--text-sm);color:var(--color-neutral-600);line-height:var(--leading-relaxed);display:flex;flex-direction:column;gap:var(--space-2);">
+                <li style="display:flex;align-items:flex-start;gap:var(--space-2);"><span style="color:var(--color-success-500);flex-shrink:0;">&#10003;</span>动效服务于功能，不为动而动</li>
+                <li style="display:flex;align-items:flex-start;gap:var(--space-2);"><span style="color:var(--color-success-500);flex-shrink:0;">&#10003;</span>同一产品内保持时长和缓动一致</li>
+                <li style="display:flex;align-items:flex-start;gap:var(--space-2);"><span style="color:var(--color-success-500);flex-shrink:0;">&#10003;</span>尊重用户系统级减弱动效偏好</li>
+                <li style="display:flex;align-items:flex-start;gap:var(--space-2);"><span style="color:var(--color-success-500);flex-shrink:0;">&#10003;</span>装饰性动画使用 infinite 循环时保持克制</li>
+              </ul>
+            </div>
+            <div class="ds-preview-card">
+              <h4 style="font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--color-neutral-800);margin-bottom:var(--space-3);">场景推荐</h4>
+              <ul style="font-size:var(--text-sm);color:var(--color-neutral-600);line-height:var(--leading-relaxed);display:flex;flex-direction:column;gap:var(--space-2);">
+                <li style="display:flex;align-items:flex-start;gap:var(--space-2);"><span style="color:var(--color-primary-500);flex-shrink:0;font-weight:var(--weight-bold);">100ms</span> 按钮按下反馈、开关切换</li>
+                <li style="display:flex;align-items:flex-start;gap:var(--space-2);"><span style="color:var(--color-primary-500);flex-shrink:0;font-weight:var(--weight-bold);">200ms</span> 悬停态、焦点态、Tooltip</li>
+                <li style="display:flex;align-items:flex-start;gap:var(--space-2);"><span style="color:var(--color-primary-500);flex-shrink:0;font-weight:var(--weight-bold);">300ms</span> 模态框、展开收起、标签页</li>
+                <li style="display:flex;align-items:flex-start;gap:var(--space-2);"><span style="color:var(--color-primary-500);flex-shrink:0;font-weight:var(--weight-bold);">500ms</span> 页面转场、内容区切换</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="ds-divider"></div>
+
+      <!-- ==================== 图片规范 ==================== -->
+      <section class="ds-section" id="images">
+        <div class="ds-section-header">
+          <div class="ds-section-label">Guidelines</div>
+          <h2 class="ds-section-title">图片规范</h2>
+          <p class="ds-section-desc">统一的图片比例和裁切规范，确保多场景下的视觉一致性。</p>
+        </div>
+
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">推荐比例 Aspect Ratios</h3>
+          <div class="ds-image-ratio-demo">
+            <div class="ds-image-ratio-box">
+              <div class="ds-image-ratio-preview" style="aspect-ratio:16/9;">16:9</div>
+              <div class="ds-image-ratio-label">16:9 — Hero 横幅、视频封面</div>
+            </div>
+            <div class="ds-image-ratio-box">
+              <div class="ds-image-ratio-preview" style="aspect-ratio:4/3;">4:3</div>
+              <div class="ds-image-ratio-label">4:3 — 活动卡片、新闻配图</div>
+            </div>
+            <div class="ds-image-ratio-box">
+              <div class="ds-image-ratio-preview" style="aspect-ratio:1/1;">1:1</div>
+              <div class="ds-image-ratio-label">1:1 — 头像、方形缩略图</div>
+            </div>
+            <div class="ds-image-ratio-box">
+              <div class="ds-image-ratio-preview" style="aspect-ratio:3/4;">3:4</div>
+              <div class="ds-image-ratio-label">3:4 — 竖版海报、信息图</div>
+            </div>
+            <div class="ds-image-ratio-box">
+              <div class="ds-image-ratio-preview" style="aspect-ratio:9/16;">9:16</div>
+              <div class="ds-image-ratio-label">9:16 — 手机壁纸、短视频封面</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-subsection">
+          <h3 class="ds-subsection-title">图片使用规范</h3>
+          <div class="ds-grid ds-grid-2">
+            <div class="ds-preview-card">
+              <h4 style="font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--color-success-700);margin-bottom:var(--space-3);">推荐做法</h4>
+              <ul style="font-size:var(--text-sm);color:var(--color-neutral-600);line-height:var(--leading-relaxed);display:flex;flex-direction:column;gap:var(--space-2);">
+                <li style="display:flex;align-items:flex-start;gap:var(--space-2);"><span style="color:var(--color-success-500);flex-shrink:0;">&#10003;</span>使用 WebP/AVIF 格式，提供 JPG 回退</li>
+                <li style="display:flex;align-items:flex-start;gap:var(--space-2);"><span style="color:var(--color-success-500);flex-shrink:0;">&#10003;</span>提供 1x、2x、3x 多分辨率版本</li>
+                <li style="display:flex;align-items:flex-start;gap:var(--space-2);"><span style="color:var(--color-success-500);flex-shrink:0;">&#10003;</span>所有图片添加描述性 alt 文本</li>
+                <li style="display:flex;align-items:flex-start;gap:var(--space-2);"><span style="color:var(--color-success-500);flex-shrink:0;">&#10003;</span>使用 object-fit: cover 保持裁切一致</li>
+              </ul>
+            </div>
+            <div class="ds-preview-card">
+              <h4 style="font-size:var(--text-sm);font-weight:var(--weight-semibold);color:var(--color-error-700);margin-bottom:var(--space-3);">避免做法</h4>
+              <ul style="font-size:var(--text-sm);color:var(--color-neutral-600);line-height:var(--leading-relaxed);display:flex;flex-direction:column;gap:var(--space-2);">
+                <li style="display:flex;align-items:flex-start;gap:var(--space-2);"><span style="color:var(--color-error-500);flex-shrink:0;">&#10007;</span>使用未经压缩的高分辨率原图</li>
+                <li style="display:flex;align-items:flex-start;gap:var(--space-2);"><span style="color:var(--color-error-500);flex-shrink:0;">&#10007;</span>拉伸变形图片以填充容器</li>
+                <li style="display:flex;align-items:flex-start;gap:var(--space-2);"><span style="color:var(--color-error-500);flex-shrink:0;">&#10007;</span>使用带水印的素材图</li>
+                <li style="display:flex;align-items:flex-start;gap:var(--space-2);"><span style="color:var(--color-error-500);flex-shrink:0;">&#10007;</span>忽略 alt 属性导致无障碍问题</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 页脚 -->
+      <footer class="ds-footer">
+        <p>小窑湾海钓产业园 · 品牌设计系统 v1.0</p>
+        <p style="margin-top:var(--space-2);font-size:var(--text-xs);color:var(--color-neutral-300);">本设计系统为内部规范文档，所有设计令牌和组件样式均可直接用于项目开发。</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- 脚本 -->
+  <script src="js/color-schemes.js"></script>
+  <script src="js/scheme-switcher.js"></script>
+  <script src="js/illustration-sync.js"></script>
+  <script src="js/pdf-export.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,360 @@
+/* ============================================
+   小窑湾海钓产业园 设计系统
+   Color Scheme Switcher — 色彩方案切换器
+   ============================================ */
+
+/* 方案切换器容器 */
+.ds-scheme-switcher {
+  background: var(--color-neutral-0);
+  border: 1px solid var(--color-neutral-200);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.ds-scheme-switcher-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-5);
+}
+
+.ds-scheme-switcher-title {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-neutral-800);
+}
+
+.ds-scheme-count {
+  font-size: var(--text-xs);
+  color: var(--color-neutral-400);
+  font-family: var(--font-mono);
+}
+
+/* 方案网格 */
+.ds-scheme-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-3);
+}
+
+/* 单个方案卡片 */
+.ds-scheme-card {
+  position: relative;
+  border: 2px solid var(--color-neutral-200);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-default);
+  background: var(--color-neutral-0);
+}
+
+.ds-scheme-card:hover {
+  border-color: var(--color-neutral-300);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.ds-scheme-card.active {
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px var(--color-primary-100);
+}
+
+/* 方案色条预览 — 按主色/辅色/点缀色比例显示 */
+.ds-scheme-preview {
+  display: flex;
+  height: 32px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: var(--space-3);
+}
+
+.ds-scheme-preview-bar {
+  transition: transform var(--duration-fast) var(--ease-default);
+}
+
+.ds-scheme-card:hover .ds-scheme-preview-bar:first-child {
+  transform: scaleY(1.1);
+}
+
+/* 方案信息 */
+.ds-scheme-name {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-neutral-800);
+  margin-bottom: 2px;
+}
+
+.ds-scheme-name-en {
+  font-size: 10px;
+  color: var(--color-neutral-400);
+  font-family: var(--font-mono);
+  margin-bottom: var(--space-2);
+}
+
+.ds-scheme-desc {
+  font-size: var(--text-xs);
+  color: var(--color-neutral-500);
+  line-height: var(--leading-relaxed);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* 选中标记 */
+.ds-scheme-check {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-full);
+  background: var(--color-primary-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all var(--duration-fast) var(--ease-bounce);
+}
+
+.ds-scheme-card.active .ds-scheme-check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.ds-scheme-check svg {
+  width: 12px;
+  height: 12px;
+  stroke: white;
+  stroke-width: 3;
+  fill: none;
+}
+
+/* ---- 自定义方案面板 ---- */
+.ds-custom-panel {
+  background: var(--color-neutral-0);
+  border: 1px solid var(--color-neutral-200);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  margin-top: var(--space-4);
+  display: none;
+}
+
+.ds-custom-panel.open {
+  display: block;
+  animation: ds-fadeInUp var(--duration-normal) var(--ease-out);
+}
+
+.ds-custom-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-5);
+}
+
+.ds-custom-panel-title {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-neutral-800);
+}
+
+.ds-custom-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-5);
+  margin-bottom: var(--space-5);
+}
+
+.ds-custom-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.ds-custom-field-label {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  color: var(--color-neutral-600);
+  letter-spacing: var(--tracking-wide);
+}
+
+.ds-custom-input-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.ds-custom-color-picker {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--color-neutral-200);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  padding: 0;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: border-color var(--duration-fast) var(--ease-default);
+}
+
+.ds-custom-color-picker:hover {
+  border-color: var(--color-neutral-400);
+}
+
+.ds-custom-color-picker::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.ds-custom-color-picker::-webkit-color-swatch {
+  border: none;
+  border-radius: var(--radius-sm);
+}
+
+.ds-custom-hex-input {
+  flex: 1;
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  border: 2px solid var(--color-neutral-200);
+  border-radius: var(--radius-md);
+  background: var(--color-neutral-0);
+  color: var(--color-neutral-800);
+  outline: none;
+  transition: border-color var(--duration-fast) var(--ease-default);
+  text-transform: uppercase;
+}
+
+.ds-custom-hex-input:focus {
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px var(--color-primary-100);
+}
+
+/* 自定义方案预览 */
+.ds-custom-preview {
+  display: flex;
+  gap: var(--space-4);
+  align-items: stretch;
+  padding: var(--space-5);
+  background: var(--color-neutral-50);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-5);
+}
+
+.ds-custom-preview-swatch {
+  flex: 1;
+  height: 64px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: flex-end;
+  padding: var(--space-2);
+  font-size: 10px;
+  font-weight: var(--weight-semibold);
+  color: rgba(255,255,255,0.8);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* 自定义方案操作按钮 */
+.ds-custom-actions {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+/* 自定义方案列表 */
+.ds-custom-saved {
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-neutral-200);
+}
+
+.ds-custom-saved-title {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  color: var(--color-neutral-400);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  margin-bottom: var(--space-3);
+}
+
+.ds-custom-saved-list {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.ds-custom-saved-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-neutral-50);
+  border: 1px solid var(--color-neutral-200);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  color: var(--color-neutral-600);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-default);
+}
+
+.ds-custom-saved-item:hover {
+  border-color: var(--color-primary-300);
+  background: var(--color-primary-50);
+}
+
+.ds-custom-saved-item.active {
+  border-color: var(--color-primary-500);
+  background: var(--color-primary-50);
+  color: var(--color-primary-700);
+  font-weight: var(--weight-semibold);
+}
+
+.ds-custom-saved-dots {
+  display: flex;
+  gap: 2px;
+}
+
+.ds-custom-saved-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+}
+
+.ds-custom-saved-delete {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  color: var(--color-neutral-400);
+  transition: all var(--duration-fast) var(--ease-default);
+  margin-left: var(--space-1);
+}
+
+.ds-custom-saved-delete:hover {
+  background: var(--color-error-50);
+  color: var(--color-error-500);
+}
+
+/* 切换过渡 */
+body.ds-scheme-transitioning,
+body.ds-scheme-transitioning * {
+  transition: background-color 0.4s ease, border-color 0.4s ease, color 0.3s ease, box-shadow 0.4s ease !important;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .ds-scheme-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ds-custom-fields {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .ds-scheme-grid {
+    grid-template-columns: 1fr;
+  }
+}

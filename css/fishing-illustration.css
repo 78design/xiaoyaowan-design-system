@@ -1,0 +1,638 @@
+/* ============================================
+   Fishing Illustration — Humaaans-style flat art
+   Pure flat color blocks, geometric shapes, no gradients/shadows.
+   All colors reference --fi-p*, --fi-s*, --fi-a* custom properties.
+   ============================================ */
+
+/* ---- Default fallback custom properties (ocean-deep) ---- */
+.ds-fishing-illust {
+  --fi-p50:  #E8F4F8;
+  --fi-p100: #C5E3ED;
+  --fi-p200: #9DCDE0;
+  --fi-p300: #6FB4CE;
+  --fi-p400: #4A9FBE;
+  --fi-p500: #1A7FA0;
+  --fi-p600: #156B89;
+  --fi-p700: #105872;
+  --fi-p800: #0B455A;
+  --fi-p900: #063243;
+
+  --fi-s50:  #FDF8F0;
+  --fi-s100: #F9EDD8;
+  --fi-s200: #F3DEBB;
+  --fi-s300: #ECCC98;
+  --fi-s400: #E5BD7A;
+  --fi-s500: #D4A654;
+  --fi-s600: #C49342;
+  --fi-s700: #A87A35;
+  --fi-s800: #8C6229;
+  --fi-s900: #704B1E;
+
+  --fi-a50:  #FFF0EC;
+  --fi-a100: #FFD9CF;
+  --fi-a200: #FFBFAD;
+  --fi-a300: #FFA08A;
+  --fi-a400: #FF876C;
+  --fi-a500: #E8644A;
+  --fi-a600: #D4503A;
+  --fi-a700: #B33D2D;
+  --fi-a800: #922B20;
+  --fi-a900: #711A13;
+}
+
+/* ---- Container ---- */
+.ds-fishing-illust {
+  width: 100%;
+  height: 480px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: var(--fi-p100);
+}
+
+/* ============================================
+   1. SKY — flat solid block
+   ============================================ */
+.fi-sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 55%;
+  background-color: var(--fi-p100);
+}
+
+/* ============================================
+   2. SUN — perfect circle, no glow
+   ============================================ */
+.fi-sun {
+  position: absolute;
+  top: 12%;
+  left: 15%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--fi-s300);
+}
+
+/* ============================================
+   3-4. MOUNTAINS — rounded rectangles at horizon
+   ============================================ */
+.fi-mountain--far {
+  position: absolute;
+  bottom: 44%;
+  left: 5%;
+  width: 40%;
+  height: 80px;
+  border-radius: 40px 60px 0 0;
+  background-color: var(--fi-p300);
+}
+
+.fi-mountain--near {
+  position: absolute;
+  bottom: 44%;
+  left: 25%;
+  width: 50%;
+  height: 60px;
+  border-radius: 50px 40px 0 0;
+  background-color: var(--fi-p400);
+}
+
+/* ============================================
+   5-6. CLOUDS — overlapping circles
+   ============================================ */
+.fi-cloud--1a {
+  position: absolute;
+  top: 10%;
+  left: 40%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  opacity: 0.7;
+}
+.fi-cloud--1b {
+  position: absolute;
+  top: 14%;
+  left: 46%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  opacity: 0.7;
+}
+
+.fi-cloud--2a {
+  position: absolute;
+  top: 6%;
+  left: 70%;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  opacity: 0.5;
+}
+.fi-cloud--2b {
+  position: absolute;
+  top: 9%;
+  left: 75%;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  opacity: 0.5;
+}
+
+/* ============================================
+   7. SEA — flat solid block
+   ============================================ */
+.fi-sea {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 45%;
+  background-color: var(--fi-p500);
+}
+
+/* ============================================
+   8-9. WAVE LINES — thin rounded rectangles
+   ============================================ */
+.fi-wave--1 {
+  position: absolute;
+  bottom: 44%;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background-color: var(--fi-p300);
+}
+
+.fi-wave--2 {
+  position: absolute;
+  bottom: 42%;
+  left: 5%;
+  width: 90%;
+  height: 5px;
+  border-radius: 3px;
+  background-color: var(--fi-p200);
+}
+
+/* ============================================
+   10-11. CLIFF — rounded rectangles, right side
+   ============================================ */
+.fi-cliff {
+  position: absolute;
+  bottom: 20%;
+  right: 0;
+  width: 28%;
+  height: 55%;
+  border-radius: 16px 0 0 0;
+  background-color: var(--fi-s700);
+}
+
+.fi-cliff-top {
+  position: absolute;
+  bottom: 68%;
+  right: -2%;
+  width: 32%;
+  height: 16px;
+  border-radius: 8px 0 0 0;
+  background-color: var(--fi-s600);
+}
+
+/* ============================================
+   12-13. GRASS TUFTS — small circles
+   ============================================ */
+.fi-grass--1 {
+  position: absolute;
+  bottom: 73%;
+  right: 18%;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--fi-s400);
+}
+
+.fi-grass--2 {
+  position: absolute;
+  bottom: 74%;
+  right: 10%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--fi-s500);
+}
+
+.fi-grass--3 {
+  position: absolute;
+  bottom: 72%;
+  right: 24%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--fi-s400);
+}
+
+/* ============================================
+   14-20. PERSON — geometric flat figure
+   Standing on cliff, facing LEFT, ~30% height
+   ============================================ */
+
+/* Legs — two narrow rectangles */
+.fi-leg--left {
+  position: absolute;
+  bottom: 36%;
+  right: 14%;
+  width: 14px;
+  height: 70px;
+  border-radius: 4px;
+  background-color: var(--fi-s700);
+}
+
+.fi-leg--right {
+  position: absolute;
+  bottom: 36%;
+  right: 18%;
+  width: 14px;
+  height: 70px;
+  border-radius: 4px;
+  background-color: var(--fi-s800);
+}
+
+/* Feet — small rounded rectangles */
+.fi-foot--left {
+  position: absolute;
+  bottom: 34%;
+  right: 13%;
+  width: 18px;
+  height: 10px;
+  border-radius: 3px 3px 5px 5px;
+  background-color: var(--fi-s800);
+}
+
+.fi-foot--right {
+  position: absolute;
+  bottom: 34%;
+  right: 17%;
+  width: 18px;
+  height: 10px;
+  border-radius: 3px 3px 5px 5px;
+  background-color: var(--fi-s900);
+}
+
+/* Torso — rounded rectangle, accent jacket */
+.fi-torso {
+  position: absolute;
+  bottom: 56%;
+  right: 11%;
+  width: 40px;
+  height: 65px;
+  border-radius: 8px;
+  background-color: var(--fi-a400);
+}
+
+/* Back arm — behind body, slight angle */
+.fi-arm--back {
+  position: absolute;
+  bottom: 62%;
+  right: 9%;
+  width: 12px;
+  height: 50px;
+  border-radius: 6px;
+  background-color: var(--fi-a300);
+  transform: rotate(-15deg);
+  transform-origin: top center;
+}
+
+/* Front arm — angled upward-left, holding rod */
+.fi-arm--front {
+  position: absolute;
+  bottom: 70%;
+  right: 16%;
+  width: 12px;
+  height: 50px;
+  border-radius: 6px;
+  background-color: var(--fi-a300);
+  transform: rotate(-50deg);
+  transform-origin: bottom center;
+}
+
+/* Neck — small rectangle */
+.fi-neck {
+  position: absolute;
+  bottom: 66%;
+  right: 17%;
+  width: 12px;
+  height: 12px;
+  background-color: var(--fi-s200);
+}
+
+/* Head — circle */
+.fi-head {
+  position: absolute;
+  bottom: 72%;
+  right: 13%;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--fi-s200);
+}
+
+/* Hair — half-circle on top */
+.fi-hair {
+  position: absolute;
+  bottom: 78%;
+  right: 12%;
+  width: 46px;
+  height: 24px;
+  border-radius: 23px 23px 0 0;
+  background-color: var(--fi-s800);
+}
+
+/* Eyes — two tiny dots */
+.fi-eye--left {
+  position: absolute;
+  bottom: 74%;
+  right: 18%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--fi-s700);
+}
+
+.fi-eye--right {
+  position: absolute;
+  bottom: 74%;
+  right: 14%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--fi-s700);
+}
+
+/* Hat — flat rounded rectangle */
+.fi-hat {
+  position: absolute;
+  bottom: 80%;
+  right: 10%;
+  width: 52px;
+  height: 14px;
+  border-radius: 4px;
+  background-color: var(--fi-a500);
+}
+
+.fi-hat-top {
+  position: absolute;
+  bottom: 82%;
+  right: 14%;
+  width: 36px;
+  height: 16px;
+  border-radius: 6px 6px 0 0;
+  background-color: var(--fi-a600);
+}
+
+/* ============================================
+   21. FISHING ROD — thin long rectangle
+   ============================================ */
+.fi-rod {
+  position: absolute;
+  bottom: 72%;
+  right: 22%;
+  width: 3px;
+  height: 220px;
+  border-radius: 2px;
+  background-color: var(--fi-s800);
+  transform: rotate(30deg);
+  transform-origin: bottom center;
+}
+
+/* Rod handle grip */
+.fi-rod-grip {
+  position: absolute;
+  bottom: 72%;
+  right: 21%;
+  width: 8px;
+  height: 20px;
+  border-radius: 3px;
+  background-color: var(--fi-a500);
+  transform: rotate(30deg);
+  transform-origin: bottom center;
+}
+
+/* ============================================
+   22. FISHING LINE — 1px element
+   ============================================ */
+.fi-line {
+  position: absolute;
+  bottom: 20%;
+  right: 38%;
+  width: 1px;
+  height: 180px;
+  background-color: var(--fi-s500);
+  opacity: 0.5;
+  transform: rotate(8deg);
+  transform-origin: top center;
+}
+
+/* ============================================
+   23. BOBBER — small circle on water
+   ============================================ */
+.fi-bobber {
+  position: absolute;
+  bottom: 42%;
+  right: 36%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--fi-a500);
+}
+
+/* Bobber top half — white */
+.fi-bobber-top {
+  position: absolute;
+  bottom: 43%;
+  right: 36%;
+  width: 10px;
+  height: 5px;
+  border-radius: 5px 5px 0 0;
+  background-color: #ffffff;
+}
+
+/* ============================================
+   24. FISH BUCKET — rectangle near feet
+   ============================================ */
+.fi-bucket {
+  position: absolute;
+  bottom: 35%;
+  right: 6%;
+  width: 22px;
+  height: 26px;
+  border-radius: 2px 2px 4px 4px;
+  background-color: var(--fi-s600);
+}
+
+/* Bucket rim */
+.fi-bucket-rim {
+  position: absolute;
+  bottom: 59%;
+  right: 5.5%;
+  width: 24px;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--fi-s500);
+}
+
+/* Bucket handle — arc */
+.fi-bucket-handle {
+  position: absolute;
+  bottom: 62%;
+  right: 8%;
+  width: 16px;
+  height: 10px;
+  border: 2px solid var(--fi-s500);
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  background-color: transparent;
+}
+
+/* ============================================
+   25-26. SEAGULLS — curved border-top arcs
+   ============================================ */
+.fi-seagull--1 {
+  position: absolute;
+  top: 18%;
+  left: 30%;
+  width: 24px;
+  height: 10px;
+  border-top: 2.5px solid var(--fi-p700);
+  border-radius: 50% 50% 0 0;
+  background-color: transparent;
+}
+
+.fi-seagull--2 {
+  position: absolute;
+  top: 14%;
+  left: 55%;
+  width: 18px;
+  height: 8px;
+  border-top: 2px solid var(--fi-p600);
+  border-radius: 50% 50% 0 0;
+  background-color: transparent;
+}
+
+/* ============================================
+   27. FISH — ellipse jumping from water
+   ============================================ */
+.fi-fish {
+  position: absolute;
+  bottom: 44%;
+  right: 32%;
+  width: 24px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--fi-a300);
+}
+
+/* Fish tail */
+.fi-fish-tail {
+  position: absolute;
+  bottom: 43%;
+  right: 30%;
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-right: 8px solid var(--fi-a300);
+}
+
+/* ============================================
+   Water surface detail — small flat ripples
+   ============================================ */
+.fi-ripple--1 {
+  position: absolute;
+  bottom: 40%;
+  right: 34%;
+  width: 30px;
+  height: 3px;
+  border-radius: 2px;
+  background-color: var(--fi-p300);
+  opacity: 0.5;
+}
+
+.fi-ripple--2 {
+  position: absolute;
+  bottom: 38%;
+  right: 20%;
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: var(--fi-p200);
+  opacity: 0.4;
+}
+
+.fi-ripple--3 {
+  position: absolute;
+  bottom: 36%;
+  right: 50%;
+  width: 16px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: var(--fi-p200);
+  opacity: 0.3;
+}
+
+/* ============================================
+   Boat in distance — simple flat shape
+   ============================================ */
+.fi-boat {
+  position: absolute;
+  bottom: 46%;
+  left: 8%;
+  width: 40px;
+  height: 12px;
+  border-radius: 0 0 6px 6px;
+  background-color: var(--fi-s600);
+}
+
+.fi-boat-mast {
+  position: absolute;
+  bottom: 52%;
+  left: calc(8% + 18px);
+  width: 2px;
+  height: 30px;
+  background-color: var(--fi-s700);
+}
+
+.fi-boat-sail {
+  position: absolute;
+  bottom: 56%;
+  left: calc(8% + 20px);
+  width: 0;
+  height: 0;
+  border-top: 14px solid transparent;
+  border-bottom: 14px solid transparent;
+  border-left: 12px solid var(--fi-p50);
+}
+
+/* ============================================
+   Cliff face detail — flat color variation
+   ============================================ */
+.fi-cliff-face {
+  position: absolute;
+  bottom: 30%;
+  right: 2%;
+  width: 20%;
+  height: 30%;
+  border-radius: 0 0 0 12px;
+  background-color: var(--fi-s800);
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 768px) {
+  .ds-fishing-illust {
+    height: 360px;
+  }
+}
