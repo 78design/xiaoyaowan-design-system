@@ -49,7 +49,11 @@
   // ============================================
   function generatePdf() {
     var jsPDFConstructor = window.jspdf && window.jspdf.jsPDF;
-    if (!jsPDFConstructor) throw new Error('jsPDF 未加载');
+    if (!jsPDFConstructor) {
+      // Fallback: try global jsPDF
+      jsPDFConstructor = window.jsPDF;
+    }
+    if (!jsPDFConstructor) throw new Error('jsPDF 未加载，请刷新页面重试');
 
     var pdf = new jsPDFConstructor('p', 'mm', 'a4');
     var pw = pdf.internal.pageSize.getWidth();   // 210
